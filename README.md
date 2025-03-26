@@ -19,6 +19,8 @@ It is assumed that you understand the use of the services below and you have the
 
 ## Contact Records dashboard overview
 
+_Note: The screenshots below are taken with randomized synthetic data. Once you deploy, you will see data based on your environment. For example, the user name below appears as an ID, but it will show you the actual user name._
+
 This dashboard provides an overview of Contact Stats, focusing on metrics such as the total number of contacts, average contact duration, agent and contact interaction time, and time spent in the queue. It includes visualizations of these metrics by day, offering insights into contact trends and agent performance. The dashboard also provides average values for callback attempts, hold time, and after-contact work, helping to monitor overall efficiency and identify areas for improvement in contact center operations.
 
 
