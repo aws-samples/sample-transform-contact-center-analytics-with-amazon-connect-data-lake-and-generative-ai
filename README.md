@@ -212,6 +212,9 @@ __aws quicksight  list-users --aws-account-id "accountNumber" --namespace defaul
 1. Go to dashboard (by clikcing on the top left Quicksight icon)
 ![Properties](images/41.png?raw=true)
 
+### Step 9: Configure Amazon Q in QuickSight
+
+Please follow the instructions [here](https://docs.aws.amazon.com/quicksight/latest/user/generative-bi-get-started.html) to enable and learn about Amazon Q in QuickSight.
 
 ## Validation
 
