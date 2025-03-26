@@ -150,7 +150,8 @@ __aws quicksight  list-users --aws-account-id "accountNumber" --namespace defaul
 
 ### Step 4 (CFT): Setup views with Amazon Athena
 
-1. Download the datalake.yaml cloudformation from [here](https://gitlab.aws.dev/riteshcy/amazon-connect-datalake-quicksight/-/blob/29587abe431e474e4b2dca8585a6f5867e79a763/datalake).
+
+1. Download the datalake.yaml cloudformation from [here](https://github.com/aws-samples/sample-transform-contact-center-analytics-with-amazon-connect-data-lake-and-generative-ai/blob/main/datalake).
 2. Search AWS CloudFormation service
 ![Properties](images/21.png?raw=true)
 3. Click Create stack
@@ -172,9 +173,9 @@ __aws quicksight  list-users --aws-account-id "accountNumber" --namespace defaul
 11. Click Run for the 5 views
 ![Properties](images/29.png?raw=true)
 
-### Step 5 (CFT): Setup up Contact Trace dashboard
+### Step 5 (CFT): Setup up Contact Record dashboard
 
-1. Download the CTR QuickSight dashboard CloudFormation template from [here](https://gitlab.aws.dev/riteshcy/amazon-connect-datalake-quicksight/-/blob/29587abe431e474e4b2dca8585a6f5867e79a763/quicksight-contact-record).
+1. Download the CTR QuickSight dashboard CloudFormation template from [here](https://github.com/aws-samples/sample-transform-contact-center-analytics-with-amazon-connect-data-lake-and-generative-ai/blob/main/quicksight-contact-record).
 2. Click on Create Stack, then "With new resources"
 ![Properties](images/30.png?raw=true)
 3. Upload the CTR CFT downloaded in step 5.1
@@ -186,7 +187,7 @@ __aws quicksight  list-users --aws-account-id "accountNumber" --namespace defaul
 
 ### Step 6 (CFT):  Setup up Contact Lens dashboard
 
-1. Download the CL QuickSight dashboard CloudFormation template from [here](https://gitlab.aws.dev/riteshcy/amazon-connect-datalake-quicksight/-/blob/29587abe431e474e4b2dca8585a6f5867e79a763/quicksight-contact-lens).
+1. Download the CL QuickSight dashboard CloudFormation template from [here](https://github.com/aws-samples/sample-transform-contact-center-analytics-with-amazon-connect-data-lake-and-generative-ai/blob/main/quicksight-contact-lens).
 2. Run the steps 5.2 through 5.5. Use the CL CFT downloaded in step 6.1
 
 ### Step 7: Setup dashboard access
