@@ -51,7 +51,7 @@ This dashboard is an Agent Contact Lens Leaderboard that displays various metric
 
 ## Generative AI usecase for Contact Center
 
-You use Amazon QuickSight native Generative AI capabilities for your Contact Center with Amazon Connect data lake.
+You use Amazon QuickSight's native Generative AI capabilities for your Contact Center with the Amazon Connect data lake.
 
 _Note: Generative AI technology delivers accurate responses when paired with effective prompt engineering. Use prompt engineering techniques to provide clear and precise instructions to enhance the quality and relevance of AI-generated responses. Well-crafted prompts lead to better context, improved output, and higher overall accuracy._
 
