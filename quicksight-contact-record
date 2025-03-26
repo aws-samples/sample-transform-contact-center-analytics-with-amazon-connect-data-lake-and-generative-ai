@@ -1,0 +1,588 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Connect Datalake Workshop
+Parameters:
+  GlueLocalDatabaseName:
+    Type: String
+    Description: Glue Local Database Name (same as datalake stack parameter)
+    Default: connect-datalake-local
+
+Resources:
+
+  #######################
+  # QuickSight DataSource
+  #######################
+  QuickSightDataSourceConnectDataLake:
+    Type: "AWS::QuickSight::DataSource"
+    Properties:
+      DataSourceId: !Sub "${AWS::StackName}-ConnectDataLake"
+      Name: !Sub "${AWS::StackName}-ConnectDataLake"
+      AwsAccountId: !Ref AWS::AccountId
+      Type: "ATHENA"
+      DataSourceParameters:
+        AthenaParameters:
+          WorkGroup: "primary"
+
+  #######################
+  # QuickSight DataSet
+  #######################
+  QuickSightDataSetCtrWithAttributes:
+    Type: "AWS::QuickSight::DataSet"
+    Properties:
+      DataSetId: ContactRecordsQS-533267107881-Contact-Records-With-Attributes
+      Name: ContactRecordsQS - Connect Contact Records With Attributes
+      AwsAccountId: !Ref AWS::AccountId
+      PhysicalTableMap:
+        06d764b5-3da7-448b-8130-9201c72260fa:
+          RelationalTable:
+            DataSourceArn: !GetAtt QuickSightDataSourceConnectDataLake.Arn
+            Catalog: "AwsDataCatalog"
+            Schema: !Sub "${GlueLocalDatabaseName}" 
+            Name: "contact_record_attributes_qs_cr_dataset"
+            InputColumns:
+              -
+                Name: "contact_id"
+                Type: "STRING"
+              -
+                Name: "attribute_key"
+                Type: "STRING"
+              -
+                Name: "attribute_value"
+                Type: "STRING"
+        da358775-8dd8-4a08-8d04-224b0c009028:
+          RelationalTable:
+            DataSourceArn: !GetAtt QuickSightDataSourceConnectDataLake.Arn
+            Catalog: "AwsDataCatalog"
+            Schema: !Sub "${GlueLocalDatabaseName}" 
+            Name: "contact_record_qs_cr_dataset"
+            InputColumns:
+              -
+                Name: "instance_id"
+                Type: "STRING"
+              -
+                Name: "aws_account_id"
+                Type: "STRING"
+              -
+                Name: "contact_id"
+                Type: "STRING"
+              -
+                Name: "initial_contact_id"
+                Type: "STRING"
+              -
+                Name: "previous_contact_id"
+                Type: "STRING"
+              -
+                Name: "related_contact_id"
+                Type: "STRING"
+              -
+                Name: "next_contact_id"
+                Type: "STRING"
+              -
+                Name: "channel"
+                Type: "STRING"
+              -
+                Name: "initiation_method"
+                Type: "STRING"
+              -
+                Name: "initiation_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "connected_to_system_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "last_update_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "scheduled_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "transfer_completed_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "disconnect_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "disconnect_reason"
+                Type: "STRING"
+              -
+                Name: "queue_duration_ms"
+                Type: "INTEGER"
+              -
+                Name: "queue_dequeue_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "queue_enqueue_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "queue_name"
+                Type: "STRING"
+              -
+                Name: "queue_arn"
+                Type: "STRING"
+              -
+                Name: "queue_id"
+                Type: "STRING"
+              -
+                Name: "agent_connection_attempts"
+                Type: "INTEGER"
+              -
+                Name: "agent_connected_to_agent_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "agent_interaction_duration_ms"
+                Type: "INTEGER"
+              -
+                Name: "agent_customer_hold_duration_ms"
+                Type: "INTEGER"
+              -
+                Name: "agent_number_of_holds"
+                Type: "INTEGER"
+              -
+                Name: "agent_longest_hold_duration_ms"
+                Type: "INTEGER"
+              -
+                Name: "agent_after_contact_work_end_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "agent_after_contact_work_duration_ms"
+                Type: "INTEGER"
+              -
+                Name: "agent_after_contact_work_start_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "attributes"
+                Type: "STRING"
+              -
+                Name: "agent_username"
+                Type: "STRING"
+              -
+                Name: "agent_arn"
+                Type: "STRING"
+              -
+                Name: "agent_id"
+                Type: "STRING"
+              -
+                Name: "instance_arn"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_1_name"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_1_arn"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_1_id"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_2_name"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_2_arn"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_2_id"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_3_name"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_3_arn"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_3_id"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_4_name"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_4_arn"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_4_id"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_5_name"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_5_arn"
+                Type: "STRING"
+              -
+                Name: "agent_hierarchy_groups_level_5_id"
+                Type: "STRING"
+              -
+                Name: "agent_routing_profile_name"
+                Type: "STRING"
+              -
+                Name: "agent_routing_profile_arn"
+                Type: "STRING"
+              -
+                Name: "agent_routing_profile_id"
+                Type: "STRING"
+              -
+                Name: "aws_contact_trace_record_format_version"
+                Type: "STRING"
+              -
+                Name: "campaign_id"
+                Type: "STRING"
+              -
+                Name: "customer_endpoint_type"
+                Type: "STRING"
+              -
+                Name: "customer_endpoint_address"
+                Type: "STRING"
+              -
+                Name: "transferred_endpoint_type"
+                Type: "STRING"
+              -
+                Name: "transferred_endpoint_address"
+                Type: "STRING"
+              -
+                Name: "system_endpoint_type"
+                Type: "STRING"
+              -
+                Name: "system_endpoint_address"
+                Type: "STRING"
+              -
+                Name: "recording_deletion_reason"
+                Type: "STRING"
+              -
+                Name: "recording_location"
+                Type: "STRING"
+              -
+                Name: "recording_status"
+                Type: "STRING"
+              -
+                Name: "recording_type"
+                Type: "STRING"
+              -
+                Name: "answering_machine_detection_status"
+                Type: "STRING"
+              -
+                Name: "voice_id_result_authentication_result"
+                Type: "STRING"
+              -
+                Name: "voice_id_result_fraud_detection_watch_list_id"
+                Type: "STRING"
+              -
+                Name: "voice_id_result_speaker_id"
+                Type: "STRING"
+              -
+                Name: "voice_id_result_fraud_detection_result"
+                Type: "STRING"
+              -
+                Name: "voice_id_result_fraud_detection_fraudster_id"
+                Type: "STRING"
+              -
+                Name: "external_third_party_interaction_duration_ms"
+                Type: "INTEGER"
+              -
+                Name: "voice_id_result_authentication_minimum_speech_ms"
+                Type: "INTEGER"
+              -
+                Name: "voice_id_result_authentication_score"
+                Type: "INTEGER"
+              -
+                Name: "voice_id_result_authentication_score_threshold"
+                Type: "INTEGER"
+              -
+                Name: "voice_id_result_fraud_detection_risk_score_known_fraudster"
+                Type: "INTEGER"
+              -
+                Name: "voice_id_result_fraud_detection_risk_score_synthetic_speech"
+                Type: "INTEGER"
+              -
+                Name: "voice_id_result_fraud_detection_risk_score_voice_spoofing"
+                Type: "INTEGER"
+              -
+                Name: "voice_id_result_fraud_detection_score_threshold"
+                Type: "INTEGER"
+              -
+                Name: "agent_pause_duration_ms"
+                Type: "INTEGER"
+              -
+                Name: "voice_id_result_speaker_enrolled"
+                Type: "BOOLEAN"
+              -
+                Name: "voice_id_result_speaker_opted_out"
+                Type: "BOOLEAN"
+              -
+                Name: "tags_references_items"
+                Type: "STRING"
+              -
+                Name: "contact_details"
+                Type: "STRING"
+              -
+                Name: "contact_evaluations"
+                Type: "STRING"
+              -
+                Name: "data_lake_last_processed_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "agent_device_platform_name"
+                Type: "STRING"
+              -
+                Name: "agent_device_platform_version"
+                Type: "STRING"
+              -
+                Name: "agent_device_operating_system"
+                Type: "STRING"
+              -
+                Name: "agent_capabilities_video"
+                Type: "STRING"
+              -
+                Name: "customer_device_platform_name"
+                Type: "STRING"
+              -
+                Name: "customer_device_platform_version"
+                Type: "STRING"
+              -
+                Name: "customer_device_operating_system"
+                Type: "STRING"
+              -
+                Name: "customer_capabilities_video"
+                Type: "STRING"
+              -
+                Name: "disconnect_details_potential_disconnect_issue"
+                Type: "STRING"
+              -
+                Name: "disconnect_details_telemetry_inferred_reason"
+                Type: "STRING"
+              -
+                Name: "task_template_arn"
+                Type: "STRING"
+              -
+                Name: "task_template_name"
+                Type: "STRING"
+              -
+                Name: "last_resumed_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "last_paused_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "customer_voice_activity_greeting_start_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "customer_voice_activity_greeting_end_timestamp"
+                Type: "DATETIME"
+              -
+                Name: "total_pause_duration_ms"
+                Type: "INTEGER"
+              -
+                Name: "total_pause_count"
+                Type: "INTEGER"
+              -
+                Name: "contact_routing_queue_priority"
+                Type: "INTEGER"
+              -
+                Name: "contact_routing_queue_time_adjustment_ms"
+                Type: "INTEGER"
+              -
+                Name: "quality_metrics_agent_reported_issue"
+                Type: "STRING"
+              -
+                Name: "quality_metrics_agent_audio"
+                Type: "STRING"
+              -
+                Name: "quality_metrics_customer_audio"
+                Type: "STRING"
+              -
+                Name: "segment_attributes"
+                Type: "STRING"
+              -
+                Name: "queue_duration_min"
+                Type: "DECIMAL"
+              -
+                Name: "agent_interaction_duration_min"
+                Type: "DECIMAL"
+              -
+                Name: "agent_customer_hold_duration_min"
+                Type: "DECIMAL"
+              -
+                Name: "agent_longest_hold_duration_min"
+                Type: "DECIMAL"
+              -
+                Name: "agent_after_contact_work_duration_min"
+                Type: "DECIMAL"
+              -
+                Name: "external_third_party_interaction_duration_min"
+                Type: "DECIMAL"
+              -
+                Name: "voice_id_result_authentication_minimum_speech_min"
+                Type: "DECIMAL"
+              -
+                Name: "agent_pause_duration_min"
+                Type: "DECIMAL"
+              -
+                Name: "total_pause_duration_min"
+                Type: "DECIMAL"
+              -
+                Name: "contact_routing_queue_time_adjustment_min"
+                Type: "DECIMAL"
+              -
+                Name: "agent_connected_to_agent_duration_ms"
+                Type: "INTEGER"
+              -
+                Name: "total_duration_ms"
+                Type: "INTEGER"
+              -
+                Name: "agent_connected_to_agent_duration_min"
+                Type: "DECIMAL"
+              -
+                Name: "total_duration_min"
+                Type: "DECIMAL"
+      LogicalTableMap:
+        2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e:
+          Alias: "contact_record_qs_cr_dataset"
+          Source:
+            PhysicalTableId: "da358775-8dd8-4a08-8d04-224b0c009028"
+        490fc1e6-2ee1-4def-903a-039152a7f8af:
+          Alias: "Intermediate Table"
+          DataTransforms:
+            -
+              ProjectOperation:
+                  ProjectedColumns:
+                    - "instance_id"
+                    - "aws_account_id"
+                    - "contact_id"
+                    - "initial_contact_id"
+                    - "previous_contact_id"
+                    - "related_contact_id"
+                    - "next_contact_id"
+                    - "channel"
+                    - "initiation_method"
+                    - "initiation_timestamp"
+                    - "connected_to_system_timestamp"
+                    - "last_update_timestamp"
+                    - "scheduled_timestamp"
+                    - "transfer_completed_timestamp"
+                    - "disconnect_timestamp"
+                    - "disconnect_reason"
+                    - "queue_duration_ms"
+                    - "queue_dequeue_timestamp"
+                    - "queue_enqueue_timestamp"
+                    - "queue_name"
+                    - "queue_arn"
+                    - "queue_id"
+                    - "agent_connection_attempts"
+                    - "agent_connected_to_agent_timestamp"
+                    - "agent_interaction_duration_ms"
+                    - "agent_customer_hold_duration_ms"
+                    - "agent_number_of_holds"
+                    - "agent_longest_hold_duration_ms"
+                    - "agent_after_contact_work_start_timestamp"
+                    - "agent_after_contact_work_end_timestamp"
+                    - "agent_after_contact_work_duration_ms"
+                    - "agent_username"
+                    - "agent_arn"
+                    - "agent_id"
+                    - "instance_arn"
+                    - "agent_routing_profile_name"
+                    - "agent_routing_profile_arn"
+                    - "agent_routing_profile_id"
+                    - "aws_contact_trace_record_format_version"
+                    - "campaign_id"
+                    - "customer_endpoint_type"
+                    - "customer_endpoint_address"
+                    - "transferred_endpoint_type"
+                    - "transferred_endpoint_address"
+                    - "system_endpoint_type"
+                    - "system_endpoint_address"
+                    - "recording_deletion_reason"
+                    - "recording_location"
+                    - "recording_status"
+                    - "recording_type"
+                    - "queue_duration_min"
+                    - "agent_interaction_duration_min"
+                    - "agent_customer_hold_duration_min"
+                    - "agent_longest_hold_duration_min"
+                    - "agent_after_contact_work_duration_min"
+                    - "agent_connected_to_agent_duration_ms"
+                    - "total_duration_ms"
+                    - "agent_connected_to_agent_duration_min"
+                    - "total_duration_min"
+                    - "attribute_key"
+                    - "attribute_value"
+
+          Source:
+            JoinInstruction:
+              LeftOperand: "2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e"
+              RightOperand: "513590e6-566f-43dd-a234-9faf172cd098"
+              Type: "LEFT"
+              OnClause: "{contact_id} = {contact_id[connect_datalake.contact_record_attributes_qs_cr_dataset]}"
+        513590e6-566f-43dd-a234-9faf172cd098:
+          Alias: "contact_record_attributes_qs_cr_dataset"
+          DataTransforms:
+            -
+              RenameColumnOperation:
+                ColumnName: "contact_id"
+                NewColumnName: "contact_id[connect_datalake.contact_record_attributes_qs_cr_dataset]"
+          Source:
+            PhysicalTableId: "06d764b5-3da7-448b-8130-9201c72260fa"
+      ImportMode: "DIRECT_QUERY"
+      FieldFolders: {}
+
+  #######################
+  # QuickSight Analysis
+  #######################
+  QuickSightAnalysisCtr:
+    Type: AWS::QuickSight::Analysis
+    Properties:
+      AnalysisId: ContactRecordsQS-533267107881-Connect-Contact-Records-Analysis
+      Name: ContactRecordsQS Connect Contact Records Analysis
+      AwsAccountId: !Ref AWS::AccountId
+      SourceEntity:
+        SourceTemplate:
+          DataSetReferences:
+            -   
+              DataSetArn: !GetAtt QuickSightDataSetCtrWithAttributes.Arn
+              DataSetPlaceholder:  "ContactRecordsQS - Connect Contact Records With Attributes"
+          Arn: "arn:aws:quicksight:us-west-2:533267107881:template/ContactRecordsQS-533267107881-Connect-Contact-Records-Analysis-Template"
+
+  #######################
+  # QuickSight Template
+  #######################
+  QuickSightTemplateCtr:
+    Type: "AWS::QuickSight::Template"
+    Properties:
+      TemplateId: ContactRecordsQS-Connect-Contact-Records-Analysis-Template
+      Name: ContactRecordsQS Connect Contact Records Analysis Template
+      AwsAccountId: !Ref AWS::AccountId
+      VersionDescription: "1"
+      SourceEntity:
+        SourceAnalysis:
+          DataSetReferences:
+            -   
+              DataSetArn: !GetAtt QuickSightDataSetCtrWithAttributes.Arn
+              DataSetPlaceholder: "ContactRecordsQS - Connect Contact Records With Attributes"
+          Arn: !GetAtt QuickSightAnalysisCtr.Arn
+
+  #######################
+  # QuickSight Dashboard
+  #######################
+  QuickSightDashboardCtr:
+    Type: "AWS::QuickSight::Dashboard"
+    Properties:
+      DashboardId: !Sub "${AWS::StackName}-CtrDashboard"
+      Name: !Sub "${AWS::StackName}-CtrDashboard"
+      AwsAccountId: !Ref AWS::AccountId
+      VersionDescription: "1"
+      DashboardPublishOptions:
+        AdHocFilteringOption:
+          AvailabilityStatus: "DISABLED"
+        ExportToCSVOption:
+          AvailabilityStatus: "ENABLED"
+        SheetControlsOption:
+          VisibilityState: "EXPANDED"
+      SourceEntity:
+        SourceTemplate:
+          DataSetReferences:
+            -   
+              DataSetArn: !GetAtt QuickSightDataSetCtrWithAttributes.Arn
+              DataSetPlaceholder: "ContactRecordsQS - Connect Contact Records With Attributes"
+          Arn: !GetAtt QuickSightTemplateCtr.Arn 
+
+Outputs:
+    QuickSightDashboardCtrOutput:
+        Description: Click to see the deployed dashboard. Please do not forget to share the dashboard 
+        Value: !Sub 'https://${AWS::Region}.quicksight.aws.amazon.com/sn/dashboards/${AWS::StackName}-CtrDashboard'

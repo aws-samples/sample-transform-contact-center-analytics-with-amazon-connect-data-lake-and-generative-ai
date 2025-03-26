@@ -1,0 +1,652 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Connect Datalake Workshop
+Parameters:
+  RAMOwner:
+    Type: String
+    Description: Shared Resource Access Manager Owner
+    Default: 932719585812
+  RAMDataLake:
+    Type: String
+    Description: Shared Resource Access Manager Data Lake Name
+    Default: connect_datalake
+  QuickSightRole:
+    Type: String
+    Description: Quick Sight Role user/default/WSOpsRole/Ops or user/default/Administrator/riteshcy-Isengard
+    Default: user/default/WSOpsRole/Ops
+  GlueLocalDatabaseName:
+    Type: String
+    Description: Glue Local Database Name
+    Default: connect-datalake-local
+
+Resources:
+  #######################
+  # S3 Bucket - Athena Result Bucket
+  #######################
+  AthenaQueryS3QueryResults:
+    DeletionPolicy: "Delete"
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${AWS::StackName}-${AWS::AccountId}-athena-results-s3"
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  #######################
+  # Glue Database
+  #######################
+  GlueDatabase:
+    Type: AWS::Glue::Database
+    Properties:
+      DatabaseInput:
+        Name: !Ref GlueLocalDatabaseName
+        Description: connect datalake glue database
+      CatalogId: !Sub "${AWS::AccountId}"
+
+  #######################
+  # Glue Tables
+  #######################
+  ContactRecord:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Sub "${AWS::AccountId}"
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Name: contact_record
+        TargetTable:
+          Name: contact_record
+          CatalogId: !Ref RAMOwner
+          DatabaseName: !Ref RAMDataLake
+
+  ContactStaticsRecord:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Sub '${AWS::AccountId}'
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Name: contact_statistic_record
+        TargetTable:
+          Name: contact_statistic_record
+          CatalogId: !Ref RAMOwner
+          DatabaseName: !Ref RAMDataLake
+
+  ContactFlowEvents:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Sub '${AWS::AccountId}'
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Name: contact_flow_events
+        TargetTable:
+          Name: contact_flow_events
+          CatalogId: !Ref RAMOwner
+          DatabaseName: !Ref RAMDataLake
+
+  AgentStatisticRecord:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Sub '${AWS::AccountId}'
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Name: agent_statistic_record
+        TargetTable:
+          Name: agent_statistic_record
+          CatalogId: !Ref RAMOwner
+          DatabaseName: !Ref RAMDataLake
+
+  AgentQueueStatisticRecord:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Sub '${AWS::AccountId}'
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Name: agent_queue_statistic_record
+        TargetTable:
+          Name: agent_queue_statistic_record
+          CatalogId: !Ref RAMOwner
+          DatabaseName: !Ref RAMDataLake
+
+  ContactEvaluationRecord:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Sub '${AWS::AccountId}'
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Name: contact_evaluation_record
+        TargetTable:
+          Name: contact_evaluation_record
+          CatalogId: !Ref RAMOwner
+          DatabaseName: !Ref RAMDataLake
+
+  ContactLensConversationalAnalytics:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Sub '${AWS::AccountId}'
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Name: contact_lens_conversational_analytics
+        TargetTable:
+          Name: contact_lens_conversational_analytics
+          CatalogId: !Ref RAMOwner
+          DatabaseName: !Ref RAMDataLake
+
+  #######################
+  # Athena Named Query 
+  #######################
+
+  AthenaNamedQueryConnectContactRecordQSCRDataSet:
+    Type: AWS::Athena::NamedQuery
+    Properties:
+      Name: !Sub "${AWS::StackName}-contact_record_qs_cr_dataset"
+      Database: !Ref GlueDatabase
+      QueryString: 
+        CREATE OR REPLACE VIEW "contact_record_qs_cr_dataset" AS 
+        SELECT
+         instance_id
+       , aws_account_id
+       , contact_id
+       , initial_contact_id
+       , previous_contact_id
+       , related_contact_id
+       , next_contact_id
+       , channel
+       , initiation_method
+       , date_parse(CAST(initiation_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') initiation_timestamp
+       , date_parse(CAST(connected_to_system_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') connected_to_system_timestamp
+       , date_parse(CAST(last_update_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') last_update_timestamp
+       , date_parse(CAST(scheduled_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') scheduled_timestamp
+       , date_parse(CAST(transfer_completed_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') transfer_completed_timestamp
+       , date_parse(CAST(disconnect_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') disconnect_timestamp
+       , disconnect_reason
+       , queue_duration_ms
+       , date_parse(CAST(queue_dequeue_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') queue_dequeue_timestamp
+       , date_parse(CAST(queue_enqueue_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') queue_enqueue_timestamp
+       , queue_name
+       , queue_arn
+       , queue_id
+       , agent_connection_attempts
+       , date_parse(CAST(agent_connected_to_agent_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') agent_connected_to_agent_timestamp
+       , agent_interaction_duration_ms
+       , agent_customer_hold_duration_ms
+       , agent_number_of_holds
+       , agent_longest_hold_duration_ms
+       , date_parse(CAST(agent_after_contact_work_start_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') agent_after_contact_work_start_timestamp
+       , date_parse(CAST(agent_after_contact_work_end_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') agent_after_contact_work_end_timestamp
+       , agent_after_contact_work_duration_ms
+       , attributes
+       , agent_username
+       , agent_arn
+       , agent_id
+       , instance_arn
+       , agent_hierarchy_groups_level_1_name
+       , agent_hierarchy_groups_level_1_arn
+       , agent_hierarchy_groups_level_1_id
+       , agent_hierarchy_groups_level_2_name
+       , agent_hierarchy_groups_level_2_arn
+       , agent_hierarchy_groups_level_2_id
+       , agent_hierarchy_groups_level_3_name
+       , agent_hierarchy_groups_level_3_arn
+       , agent_hierarchy_groups_level_3_id
+       , agent_hierarchy_groups_level_4_name
+       , agent_hierarchy_groups_level_4_arn
+       , agent_hierarchy_groups_level_4_id
+       , agent_hierarchy_groups_level_5_name
+       , agent_hierarchy_groups_level_5_arn
+       , agent_hierarchy_groups_level_5_id
+       , agent_routing_profile_name
+       , agent_routing_profile_arn
+       , agent_routing_profile_id
+       , aws_contact_trace_record_format_version
+       , campaign_Id
+       , customer_endpoint_type
+       , customer_endpoint_address
+       , transferred_endpoint_type
+       , transferred_endpoint_address
+       , system_endpoint_type
+       , system_endpoint_address
+       , recording_deletion_reason
+       , recording_location
+       , recording_status
+       , recording_type
+       , answering_machine_detection_Status
+       , voice_id_result_authentication_result
+       , voice_id_result_fraud_detection_watch_list_id
+       , voice_id_result_speaker_id
+       , voice_id_result_fraud_detection_result
+       , voice_id_result_fraud_detection_fraudster_Id
+       , external_third_party_interaction_duration_ms
+       , voice_id_result_authentication_minimum_speech_ms
+       , voice_id_result_authentication_score
+       , voice_id_result_authentication_score_threshold
+       , voice_id_result_fraud_detection_risk_score_known_fraudster
+       , voice_id_result_fraud_detection_risk_score_synthetic_speech
+       , voice_id_result_fraud_detection_risk_score_voice_spoofing
+       , voice_id_result_fraud_detection_score_threshold
+       , agent_pause_duration_ms
+       , voice_id_result_speaker_enrolled
+       , voice_id_result_speaker_opted_out
+       , media_streams_items
+       , voice_id_result_fraud_detection_reasons_items
+       , tags_references_items
+       , contact_details
+       , contact_evaluations
+       , references
+       , agent_state_transitions
+       , recordings
+       , date_parse(CAST(data_lake_last_processed_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') data_lake_last_processed_timestamp
+       , agent_device_platform_name
+       , agent_device_platform_version
+       , agent_device_operating_system
+       , agent_capabilities_video
+       , customer_device_platform_name
+       , customer_device_platform_version
+       , customer_device_operating_system
+       , customer_capabilities_video
+       , disconnect_details_potential_disconnect_issue
+       , disconnect_details_telemetry_inferred_reason
+       , task_template_arn
+       , task_template_name
+       , date_parse(CAST(last_resumed_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') last_resumed_timestamp
+       , date_parse(CAST(last_paused_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') last_paused_timestamp
+       , date_parse(CAST(customer_voice_activity_greeting_start_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') customer_voice_activity_greeting_start_timestamp
+       , date_parse(CAST(customer_voice_activity_greeting_end_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') customer_voice_activity_greeting_end_timestamp
+       , total_pause_duration_ms
+       , total_pause_count
+       , contact_routing_queue_priority
+       , contact_routing_queue_time_adjustment_ms
+       , quality_metrics_agent_reported_issue
+       , quality_metrics_agent_audio
+       , quality_metrics_customer_audio
+       , segment_attributes
+       , ((CAST(queue_duration_ms AS decimal(20, 6)) / 1000) / 60) queue_duration_min
+       , ((CAST(agent_interaction_duration_ms AS decimal(20, 6)) / 1000) / 60) agent_interaction_duration_min
+       , ((CAST(agent_customer_hold_duration_ms AS decimal(20, 6)) / 1000) / 60) agent_customer_hold_duration_min
+       , ((CAST(agent_longest_hold_duration_ms AS decimal(20, 6)) / 1000) / 60) agent_longest_hold_duration_min
+       , ((CAST(agent_after_contact_work_duration_ms AS decimal(20, 6)) / 1000) / 60) agent_after_contact_work_duration_min
+       , ((CAST(external_third_party_interaction_duration_ms AS decimal(20, 6)) / 1000) / 60) external_third_party_interaction_duration_min
+       , ((CAST(voice_id_result_authentication_minimum_speech_ms AS decimal(20, 6)) / 1000) / 60) voice_id_result_authentication_minimum_speech_min
+       , ((CAST(agent_pause_duration_ms AS decimal(20, 6)) / 1000) / 60) agent_pause_duration_min
+       , ((CAST(total_pause_duration_ms AS decimal(20, 6)) / 1000) / 60) total_pause_duration_min
+       , ((CAST(contact_routing_queue_time_adjustment_ms AS decimal(20, 6)) / 1000) / 60) contact_routing_queue_time_adjustment_min
+       , date_diff('millisecond', agent_connected_to_agent_timestamp, disconnect_timestamp) agent_connected_to_agent_duration_ms
+       , date_diff('millisecond', initiation_timestamp, disconnect_timestamp) total_duration_ms
+       , ((CAST(date_diff('millisecond', agent_connected_to_agent_timestamp, disconnect_timestamp) AS decimal(20, 6)) / 1000) / 60) agent_connected_to_agent_duration_min
+       , ((CAST(date_diff('millisecond', initiation_timestamp, disconnect_timestamp) AS decimal(20, 6)) / 1000) / 60) total_duration_min
+       FROM contact_record
+
+  AthenaNamedQueryConnectCTRAttributes:
+    Type: AWS::Athena::NamedQuery
+    Properties:
+      Name: !Sub "${AWS::StackName}-contact_record_attributes_qs_cr_dataset"
+      Database: !Ref GlueDatabase
+      QueryString: 
+        CREATE OR REPLACE VIEW "contact_record_attributes_qs_cr_dataset" AS 
+        SELECT
+          contact_id
+        , attribute_key
+        , attribute_value
+        FROM
+          (contact_record cr
+        CROSS JOIN UNNEST(COALESCE(map_keys(cr.attributes), ARRAY[null]), COALESCE(map_values(cr.attributes), ARRAY[null])) t (attribute_key, attribute_value))
+
+  AthenaNamedQueryConnectLensContactRecordQSCLDataSet:
+    Type: AWS::Athena::NamedQuery
+    Properties:
+      Name: !Sub "${AWS::StackName}-contact_record_qs_cl_dataset"
+      Database: !Ref GlueDatabase
+      QueryString: 
+        CREATE OR REPLACE VIEW "contact_record_qs_cl_dataset" AS 
+        SELECT
+          instance_id
+        , aws_account_id
+        , contact_id
+        , initial_contact_id
+        , previous_contact_id
+        , related_contact_id
+        , next_contact_id
+        , channel
+        , initiation_method
+        , date_parse(CAST(initiation_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') initiation_timestamp
+        , date_parse(CAST(connected_to_system_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') connected_to_system_timestamp
+        , date_parse(CAST(last_update_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') last_update_timestamp
+        , date_parse(CAST(scheduled_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') scheduled_timestamp
+        , date_parse(CAST(transfer_completed_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') transfer_completed_timestamp
+        , date_parse(CAST(disconnect_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') disconnect_timestamp
+        , disconnect_reason
+        , queue_duration_ms
+        , date_parse(CAST(queue_dequeue_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') queue_dequeue_timestamp
+        , date_parse(CAST(queue_enqueue_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') queue_enqueue_timestamp
+        , queue_name
+        , queue_arn
+        , queue_id
+        , agent_connection_attempts
+        , date_parse(CAST(agent_connected_to_agent_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') agent_connected_to_agent_timestamp
+        , agent_interaction_duration_ms
+        , agent_customer_hold_duration_ms
+        , agent_number_of_holds
+        , agent_longest_hold_duration_ms
+        , date_parse(CAST(agent_after_contact_work_start_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') agent_after_contact_work_start_timestamp
+        , date_parse(CAST(agent_after_contact_work_end_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') agent_after_contact_work_end_timestamp
+        , agent_after_contact_work_duration_ms
+        , attributes
+        , agent_username
+        , agent_arn
+        , agent_id
+        , instance_arn
+        , agent_hierarchy_groups_level_1_name
+        , agent_hierarchy_groups_level_1_arn
+        , agent_hierarchy_groups_level_1_id
+        , agent_hierarchy_groups_level_2_name
+        , agent_hierarchy_groups_level_2_arn
+        , agent_hierarchy_groups_level_2_id
+        , agent_hierarchy_groups_level_3_name
+        , agent_hierarchy_groups_level_3_arn
+        , agent_hierarchy_groups_level_3_id
+        , agent_hierarchy_groups_level_4_name
+        , agent_hierarchy_groups_level_4_arn
+        , agent_hierarchy_groups_level_4_id
+        , agent_hierarchy_groups_level_5_name
+        , agent_hierarchy_groups_level_5_arn
+        , agent_hierarchy_groups_level_5_id
+        , agent_routing_profile_name
+        , agent_routing_profile_arn
+        , agent_routing_profile_id
+        , aws_contact_trace_record_format_version
+        , campaign_Id
+        , customer_endpoint_type
+        , customer_endpoint_address
+        , transferred_endpoint_type
+        , transferred_endpoint_address
+        , system_endpoint_type
+        , system_endpoint_address
+        , recording_deletion_reason
+        , recording_location
+        , recording_status
+        , recording_type
+        , answering_machine_detection_Status
+        , voice_id_result_authentication_result
+        , voice_id_result_fraud_detection_watch_list_id
+        , voice_id_result_speaker_id
+        , voice_id_result_fraud_detection_result
+        , voice_id_result_fraud_detection_fraudster_Id
+        , external_third_party_interaction_duration_ms
+        , voice_id_result_authentication_minimum_speech_ms
+        , voice_id_result_authentication_score
+        , voice_id_result_authentication_score_threshold
+        , voice_id_result_fraud_detection_risk_score_known_fraudster
+        , voice_id_result_fraud_detection_risk_score_synthetic_speech
+        , voice_id_result_fraud_detection_risk_score_voice_spoofing
+        , voice_id_result_fraud_detection_score_threshold
+        , agent_pause_duration_ms
+        , voice_id_result_speaker_enrolled
+        , voice_id_result_speaker_opted_out
+        , media_streams_items
+        , voice_id_result_fraud_detection_reasons_items
+        , tags_references_items
+        , contact_details
+        , contact_evaluations
+        , references
+        , agent_state_transitions
+        , recordings
+        , date_parse(CAST(data_lake_last_processed_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') data_lake_last_processed_timestamp
+        , agent_device_platform_name
+        , agent_device_platform_version
+        , agent_device_operating_system
+        , agent_capabilities_video
+        , customer_device_platform_name
+        , customer_device_platform_version
+        , customer_device_operating_system
+        , customer_capabilities_video
+        , disconnect_details_potential_disconnect_issue
+        , disconnect_details_telemetry_inferred_reason
+        , task_template_arn
+        , task_template_name
+        , date_parse(CAST(last_resumed_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') last_resumed_timestamp
+        , date_parse(CAST(last_paused_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') last_paused_timestamp
+        , date_parse(CAST(customer_voice_activity_greeting_start_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') customer_voice_activity_greeting_start_timestamp
+        , date_parse(CAST(customer_voice_activity_greeting_end_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') customer_voice_activity_greeting_end_timestamp
+        , total_pause_duration_ms
+        , total_pause_count
+        , contact_routing_queue_priority
+        , contact_routing_queue_time_adjustment_ms
+        , quality_metrics_agent_reported_issue
+        , quality_metrics_agent_audio
+        , quality_metrics_customer_audio
+        , segment_attributes
+        , ((CAST(queue_duration_ms AS decimal(20, 6)) / 1000) / 60) queue_duration_min
+        , ((CAST(agent_interaction_duration_ms AS decimal(20, 6)) / 1000) / 60) agent_interaction_duration_min
+        , ((CAST(agent_customer_hold_duration_ms AS decimal(20, 6)) / 1000) / 60) agent_customer_hold_duration_min
+        , ((CAST(agent_longest_hold_duration_ms AS decimal(20, 6)) / 1000) / 60) agent_longest_hold_duration_min
+        , ((CAST(agent_after_contact_work_duration_ms AS decimal(20, 6)) / 1000) / 60) agent_after_contact_work_duration_min
+        , ((CAST(external_third_party_interaction_duration_ms AS decimal(20, 6)) / 1000) / 60) external_third_party_interaction_duration_min
+        , ((CAST(voice_id_result_authentication_minimum_speech_ms AS decimal(20, 6)) / 1000) / 60) voice_id_result_authentication_minimum_speech_min
+        , ((CAST(agent_pause_duration_ms AS decimal(20, 6)) / 1000) / 60) agent_pause_duration_min
+        , ((CAST(total_pause_duration_ms AS decimal(20, 6)) / 1000) / 60) total_pause_duration_min
+        , ((CAST(contact_routing_queue_time_adjustment_ms AS decimal(20, 6)) / 1000) / 60) contact_routing_queue_time_adjustment_min
+        , date_diff('millisecond', agent_connected_to_agent_timestamp, disconnect_timestamp) agent_connected_to_agent_duration_ms
+        , date_diff('millisecond', initiation_timestamp, disconnect_timestamp) total_duration_ms
+        , ((CAST(date_diff('millisecond', agent_connected_to_agent_timestamp, disconnect_timestamp) AS decimal(20, 6)) / 1000) / 60) agent_connected_to_agent_duration_min
+        , ((CAST(date_diff('millisecond', initiation_timestamp, disconnect_timestamp) AS decimal(20, 6)) / 1000) / 60) total_duration_min
+        FROM contact_record
+
+  AthenaNamedQueryConnectLensConversationAnalyticsDataSet:
+    Type: AWS::Athena::NamedQuery
+    Properties:
+      Name: !Sub "${AWS::StackName}-contact_lens_conversational_analytics_qs_cl_dataset"
+      Database: !Ref GlueDatabase
+      QueryString: 
+        CREATE OR REPLACE VIEW "contact_lens_conversational_analytics_qs_cl_dataset" AS 
+        SELECT
+          instance_id
+        , aws_account_id
+        , version
+        , instance_arn
+        , contact_id
+        , channel
+        , language_locale
+        , feature
+        , categories
+        , date_parse(CAST(disconnect_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') disconnect_timestamp
+        , greeting_time_agent_ms
+        , non_talk_time_total_ms
+        , talk_time_total_ms
+        , talk_time_agent_ms
+        , talk_time_customer_ms
+        , total_conversation_duration_ms
+        , talk_speed_agent_wpm
+        , talk_speed_customer_wpm
+        , interruptions_time_total_ms
+        , interruptions_time_agent_ms
+        , interruptions_time_customer_ms
+        , interruptions_total_count
+        , interruptions_agent_count
+        , interruptions_customer_count
+        , sentiment_overall_score_agent
+        , sentiment_overall_score_customer
+        , sentiment_interaction_score_customer_with_agent
+        , sentiment_interaction_score_customer_without_agent
+        , sentiment_end_score_agent
+        , sentiment_end_score_customer
+        , response_time_average_agent_ms
+        , response_time_average_customer_ms
+        , response_time_maximum_agent_ms
+        , response_time_maximum_customer_ms
+        , date_parse(CAST(data_lake_last_processed_timestamp AS varchar), '%Y-%m-%d %H:%i:%s.%f UTC') data_lake_last_processed_timestamp
+        , ((CAST(greeting_time_agent_ms AS decimal(20, 6)) / 1000) / 60) greeting_time_agent_min
+        , ((CAST(non_talk_time_total_ms AS decimal(20, 6)) / 1000) / 60) non_talk_time_total_min
+        , ((CAST(talk_time_total_ms AS decimal(20, 6)) / 1000) / 60) talk_time_total_min
+        , ((CAST(talk_time_agent_ms AS decimal(20, 6)) / 1000) / 60) talk_time_agent_min
+        , ((CAST(talk_time_customer_ms AS decimal(20, 6)) / 1000) / 60) talk_time_customer_min
+        , ((CAST(total_conversation_duration_ms AS decimal(20, 6)) / 1000) / 60) total_conversation_duration_min
+        , ((CAST(interruptions_time_total_ms AS decimal(20, 6)) / 1000) / 60) interruptions_time_total_min
+        , ((CAST(interruptions_time_agent_ms AS decimal(20, 6)) / 1000) / 60) interruptions_time_agent_min
+        , ((CAST(interruptions_time_customer_ms AS decimal(20, 6)) / 1000) / 60) interruptions_time_customer_min
+        , ((CAST(response_time_average_agent_ms AS decimal(20, 6)) / 1000) / 60) response_time_average_agent_min
+        , ((CAST(response_time_average_customer_ms AS decimal(20, 6)) / 1000) / 60) response_time_average_customer_min
+        , ((CAST(response_time_maximum_agent_ms AS decimal(20, 6)) / 1000) / 60) response_time_maximum_agent_min
+        , ((CAST(response_time_maximum_customer_ms AS decimal(20, 6)) / 1000) / 60) response_time_maximum_customer_min
+        FROM contact_lens_conversational_analytics
+
+  AthenaNamedQueryConnectLensConversationAnalyticsCatDataSet:
+    Type: AWS::Athena::NamedQuery
+    Properties:
+      Name: !Sub "${AWS::StackName}-contact_lens_conversational_analytics_categories_qs_cl_dataset"
+      Database: !Ref GlueDatabase
+      QueryString: 
+        CREATE OR REPLACE VIEW "contact_lens_conversational_analytics_categories_qs_cl_dataset" AS 
+        SELECT contact_id , category
+        FROM (contact_lens_conversational_analytics cl CROSS JOIN UNNEST(cl.categories) t (category))
+
+  #######################
+  # Lake Formation Database, Table Permissions
+  #######################
+  DatabasePermission:
+    Type: AWS::LakeFormation::Permissions
+    Properties:
+      DataLakePrincipal:
+        DataLakePrincipalIdentifier: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:${QuickSightRole}"
+      Resource:
+        DatabaseResource:
+          CatalogId: !Sub "${AWS::AccountId}"
+          Name: !Ref GlueDatabase
+      Permissions:
+        - ALL
+
+  TablePermissionContactRecord:
+    Type: AWS::LakeFormation::Permissions
+    Properties:
+      DataLakePrincipal:
+        DataLakePrincipalIdentifier: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:${QuickSightRole}"
+      Resource:
+        TableResource:
+          CatalogId: !Ref RAMOwner
+          Name: contact_record
+          DatabaseName: !Ref RAMDataLake
+      Permissions:
+        - SELECT
+
+  TablePermissionContactStaticsRecord:
+    Type: AWS::LakeFormation::Permissions
+    Properties:
+      DataLakePrincipal:
+        DataLakePrincipalIdentifier: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:${QuickSightRole}"
+      Resource:
+        TableResource:
+          CatalogId: !Ref RAMOwner
+          Name: contact_statistic_record
+          DatabaseName: !Ref RAMDataLake
+      Permissions:
+        - SELECT
+
+  TablePermissionContactFlowEvents:
+    Type: AWS::LakeFormation::Permissions
+    Properties:
+      DataLakePrincipal:
+        DataLakePrincipalIdentifier: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:${QuickSightRole}"
+      Resource:
+        TableResource:
+          CatalogId: !Ref RAMOwner
+          Name: contact_flow_events
+          DatabaseName: !Ref RAMDataLake
+      Permissions:
+        - SELECT
+
+  TablePermissionAgentStatisticRecord:
+    Type: AWS::LakeFormation::Permissions
+    Properties:
+      DataLakePrincipal:
+        DataLakePrincipalIdentifier: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:${QuickSightRole}"
+      Resource:
+        TableResource:
+          CatalogId: !Ref RAMOwner
+          Name: agent_statistic_record
+          DatabaseName: !Ref RAMDataLake
+      Permissions:
+        - SELECT
+
+  TablePermissionAgentQueueStatisticRecord:
+    Type: AWS::LakeFormation::Permissions
+    Properties:
+      DataLakePrincipal:
+        DataLakePrincipalIdentifier: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:${QuickSightRole}"
+      Resource:
+        TableResource:
+          CatalogId: !Ref RAMOwner
+          Name: agent_queue_statistic_record
+          DatabaseName: !Ref RAMDataLake
+      Permissions:
+        - SELECT
+
+  TablePermissionContactEvaluationRecord:
+    Type: AWS::LakeFormation::Permissions
+    Properties:
+      DataLakePrincipal:
+        DataLakePrincipalIdentifier: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:${QuickSightRole}"
+      Resource:
+        TableResource:
+          CatalogId: !Ref RAMOwner
+          Name: contact_evaluation_record
+          DatabaseName: !Ref RAMDataLake
+      Permissions:
+        - SELECT
+
+  TablePermissionContactLensConversationalAnalytics:
+    Type: AWS::LakeFormation::Permissions
+    Properties:
+      DataLakePrincipal:
+        DataLakePrincipalIdentifier: !Sub "arn:aws:quicksight:${AWS::Region}:${AWS::AccountId}:${QuickSightRole}"
+      Resource:
+        TableResource:
+          CatalogId: !Ref RAMOwner
+          Name: contact_lens_conversational_analytics
+          DatabaseName: !Ref RAMDataLake
+      Permissions:
+        - SELECT
+
+
+Outputs:
+  AthenaNamedQueryConnectContactRecordQSCRDataSetOutput:
+    Description : Creates View for CTR Dashboard
+    Value: !Join
+      - ''
+      - - !Sub https://console.aws.amazon.com/athena/home?force&region=${AWS::Region}
+        - '#query/saved/'
+        - !Ref AthenaNamedQueryConnectContactRecordQSCRDataSet
+  AthenaNamedQueryConnectCTRAttributesOutput:
+    Description : Creates View for CTR Dashboard
+    Value: !Join
+      - ''
+      - - !Sub https://console.aws.amazon.com/athena/home?force&region=${AWS::Region}
+        - '#query/saved/'
+        - !Ref AthenaNamedQueryConnectCTRAttributes
+  AthenaNamedQueryConnectLensContactRecordQSCLDataSetOutput:
+    Description : Creates View for Contact Lens Dashboard
+    Value: !Join
+      - ''
+      - - !Sub https://console.aws.amazon.com/athena/home?force&region=${AWS::Region}
+        - '#query/saved/'
+        - !Ref AthenaNamedQueryConnectLensContactRecordQSCLDataSet
+  AthenaNamedQueryConnectLensConversationAnalyticsDataSetOutput:
+    Description : Creates View for Contact Lens Dashboard
+    Value: !Join
+      - ''
+      - - !Sub https://console.aws.amazon.com/athena/home?force&region=${AWS::Region}
+        - '#query/saved/'
+        - !Ref AthenaNamedQueryConnectLensConversationAnalyticsDataSet
+  AthenaNamedQueryConnectLensConversationAnalyticsCatDataSetOutput:
+    Description : Creates View for Contact Lens Dashboard
+    Value: !Join
+      - ''
+      - - !Sub https://console.aws.amazon.com/athena/home?force&region=${AWS::Region}
+        - '#query/saved/'
+        - !Ref AthenaNamedQueryConnectLensConversationAnalyticsCatDataSet
+
+  AthenaQueryS3QueryResultsOutput:
+    Value: !GetAtt AthenaQueryS3QueryResults.Arn
+
