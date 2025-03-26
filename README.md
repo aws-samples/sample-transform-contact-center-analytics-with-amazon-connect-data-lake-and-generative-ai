@@ -4,9 +4,9 @@
 
 Organizations need the capability to perform advanced analytics on the contact center data and build custom reports for different business needs. With Amazon Connect analytics data lake, organizations easily access and analyze contact center performance metrics using their preferred BI tool. With the analytics data lake, records are de-duped and ready to query; eliminating the need to build and maintain complex data pipelines to perform extract, transform, and load (ETL) operations to access Amazon Connect data to get it ready for analytics and artificial intelligence (AI) workloads.
 
-Organizations use the analytics data lake with Amazon Athena and Amazon QuickSight, or other BI tools, to create customized reports and dashboards. This helps managers track important metrics for improving customer experience and operational efficiency. For example, by visualizing agent performance, managers identify the best performers for lost order calls and optimize routing profiles to staff queues with these agents, leading to desired business outcomes.
+Organizations use the analytics data lake with Amazon Athena and Amazon QuickSight, or other BI tools, to create customized reports and dashboards leveraging Generative AI. This helps managers track important metrics for improving customer experience and operational efficiency. For example, by visualizing agent performance, managers identify the best performers for lost order calls and optimize routing profiles to staff queues with these agents, leading to desired business outcomes.
 
-In this solution, learn how to use Amazon Connect Data Lake to build advance analytics dashboard with Amazon QuickSight.
+In this solution, learn how to use Amazon Connect Data Lake to build advance analytics dashboard with Amazon QuickSight and QuickSight Gen BI (Generative AI capability)
 
 ## Prerequisites
 It is assumed that you understand the use of the services below and you have the following prerequisites:
