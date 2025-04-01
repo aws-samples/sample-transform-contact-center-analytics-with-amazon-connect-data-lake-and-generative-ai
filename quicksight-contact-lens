@@ -686,13 +686,4362 @@ Resources:
       AnalysisId: ContactLensQS-Connect-Contact-Lens-Analysis
       Name: ContactLensQS Connect Contact Lens Analysis
       AwsAccountId: !Ref AWS::AccountId
-      SourceEntity:
-        SourceTemplate:
-          DataSetReferences:
-            -   
-              DataSetArn: !GetAtt QuickSightDataSetCLCtrWithAttributes.Arn
-              DataSetPlaceholder:  "ContactLensQS - Connect Contact Records With Contact Lens"
-          Arn: "arn:aws:quicksight:us-west-2:533267107881:template/ContactLensQS-533267107881-Connect-Contact-Lens-Analysis-Template"
+      Definition: 
+        AnalysisDefaults:
+          DefaultNewSheetConfiguration:
+            InteractiveLayoutConfiguration:
+              Grid:
+                CanvasSizeOptions:
+                  ScreenCanvasSizeOptions:
+                    ResizeOption: RESPONSIVE
+            SheetContentType: INTERACTIVE
+        CalculatedFields: []
+        DataSetIdentifierDeclarations:
+        - DataSetArn: !GetAtt QuickSightDataSetCLCtrWithAttributes.Arn
+          Identifier: ContactLensQS - Connect Contact Records With Contact Lens
+        FilterGroups:
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 875dceb4-709a-45be-a28b-775821963209
+          Filters:
+          - RelativeDatesFilter:
+              AnchorDateConfiguration:
+                AnchorOption: NOW
+              Column:
+                ColumnName: initiation_timestamp
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 6146794c-c0ef-407d-a908-60d8e40ae412
+              MinimumGranularity: DAY
+              NullOption: NON_NULLS_ONLY
+              ParameterName: LastNDays
+              RelativeDateType: LAST
+              TimeGranularity: DAY
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 023556d8-e6dd-4693-8c15-e1666f7765c3
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: channel
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: Channel
+              FilterId: 97c2254a-acd1-4233-b508-153cae176609
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 94984be3-1cb9-4c4e-b0b8-b62d41f7d571
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: Queue
+              FilterId: d5e24fd0-ee7f-4750-af31-d229b0c3bec8
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: febd046e-9d86-470a-a6c8-6af751eb0869
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: Agent
+              FilterId: 4ff1948c-6109-4670-bc44-eb034baec182
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 44921032-a265-4b5e-858c-2638ce441af0
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_routing_profile_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: RoutingProfile
+              FilterId: cb128dba-6ae0-4ede-a79b-66d6f3b9c4ed
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 6ce6ae03-cb8b-4778-b1da-d0c2222aeb03
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: ab9c052e-f115-474b-aeca-b0880b1ba46b
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: a707c884-8c9a-49d3-9934-bdeab85e5b0e
+                VisualIds:
+                - 96ef4ea8-62c2-4594-b860-7cba19c28e05
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: f4fc63e5-771e-42f8-9562-1d094931c350
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: fb05249b-a9ad-4a5f-89e3-030cb6942edd
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: a707c884-8c9a-49d3-9934-bdeab85e5b0e
+                VisualIds:
+                - 7d8a11c8-cf62-4229-959a-932382df461d
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 398e56dc-f654-4516-af80-2eb1b504ee8a
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 05e9c1e1-ac1f-4cc8-a200-de3915a8473b
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: a707c884-8c9a-49d3-9934-bdeab85e5b0e
+                VisualIds:
+                - 91feecd2-4a14-427a-ab2c-2c4b56bd1ba9
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: ffed87c0-07ae-4d33-8dcd-f4b34f886361
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: initiation_method
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: InitiationMethod
+              FilterId: 5bfe9e7a-eed3-4f27-bbf2-803bd2f78fa2
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 146af21f-82b9-4022-ba3a-7ed7d5dd8817
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: sentiment_overall_score_customer
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: f0a00e08-c79a-4143-af7e-3304b33f79ef
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 687a3667-b542-4697-ad24-9a8065911255
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 91d47789-20ab-494d-85e7-5b405e9649da
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: sentiment_overall_score_customer
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: ca24f78e-d7f9-467e-93bc-8b52c1a55ab9
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 0f131648-a0ef-4050-8b89-9130d6a9eb2c
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 79baed1a-e3ff-4c84-a4f4-3b14ee8ff68a
+          Filters:
+          - NumericRangeFilter:
+              Column:
+                ColumnName: sentiment_overall_score_customer
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 1ac7ab1f-40fa-4223-bbf8-a245e051fe23
+              IncludeMaximum: false
+              IncludeMinimum: false
+              NullOption: NON_NULLS_ONLY
+              RangeMinimum:
+                StaticValue: -1000.0
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 0f131648-a0ef-4050-8b89-9130d6a9eb2c
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 60fb882b-0b0f-49bd-88f5-6a7fd565fc8a
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: non_talk_time_total_min
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 5b9d209c-9133-4ada-b807-b7c0df330039
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 8879f65f-2aab-4496-b2d9-8350ec10aeca
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 53901a4e-7518-4895-b8a0-78bb63f8df7c
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: non_talk_time_total_min
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 94e3f2aa-5135-4cf3-a6e7-e4dc0ae7f54d
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 86e4eff0-9a2c-4087-b0c4-3abc0870e171
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 2a82d709-48d1-469a-8621-22a3872c64c3
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: sentiment_overall_score_agent
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 41b46974-e972-4ee7-92ec-62f10a050946
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - ce08911b-10f8-410c-86de-d1442f21214f
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 203aab63-70ca-419f-9ba6-9bfbebfa1101
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: sentiment_overall_score_agent
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: dc6c1869-0e5e-4d1a-9521-dc4edd5cd9a6
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - c8acdae9-2f42-4542-80ea-a1275141298f
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 280219d0-426d-48b4-8e02-c82f2a4d58ff
+          Filters:
+          - NumericRangeFilter:
+              Column:
+                ColumnName: sentiment_overall_score_agent
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 82458d6a-e85e-469c-97f0-a57d827fef93
+              IncludeMaximum: false
+              IncludeMinimum: false
+              NullOption: NON_NULLS_ONLY
+              RangeMinimum:
+                StaticValue: -1000.0
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - ce08911b-10f8-410c-86de-d1442f21214f
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 130c611b-0dee-491b-aa69-6afb72bd9a42
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: talk_time_agent_min
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 776d64f5-7cfe-40bf-a24a-28527d5f9e63
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - ffcfd47c-80f6-408d-bae7-8dba38d81c88
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: d579ad4d-6a87-4b97-b910-41bcb7ce0911
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: talk_time_agent_min
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: f4142778-d4af-432b-b3aa-2340f9af0137
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - effd07f7-091f-4e5d-92ac-63329fbb5a67
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 9538a9cc-3ddc-4c1f-a171-e722e36dbaf6
+          Filters:
+          - NumericRangeFilter:
+              Column:
+                ColumnName: talk_time_agent_min
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 6755f150-fe97-4038-882d-5c19d170f10f
+              IncludeMaximum: false
+              IncludeMinimum: false
+              NullOption: NON_NULLS_ONLY
+              RangeMinimum:
+                StaticValue: 0.0
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - effd07f7-091f-4e5d-92ac-63329fbb5a67
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: ff987edf-45f3-442c-a5e7-a73536160741
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: total_conversation_duration_min
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: afd954a7-861c-4afe-9ad2-e07ba958126b
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 917a9ab1-5623-4d2e-b69c-0973ca24a0cb
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 9a6ffafb-890e-4403-9643-43092610f661
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: total_conversation_duration_min
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 64388944-be7e-4aab-8bac-b4f5c6b07e3c
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 7cd52fb6-eccb-4f67-94c8-e35dbe8c5f20
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: cd2fe6be-ee53-4858-803d-8c5ee8e0ffb8
+          Filters:
+          - NumericRangeFilter:
+              Column:
+                ColumnName: total_conversation_duration_min
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: b4ac3509-c6cb-4695-8fd0-3480f1f247ad
+              IncludeMaximum: false
+              IncludeMinimum: false
+              NullOption: NON_NULLS_ONLY
+              RangeMinimum:
+                StaticValue: 0.0
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 7cd52fb6-eccb-4f67-94c8-e35dbe8c5f20
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 7ff9f72a-e3fe-4144-b0c1-51de917c30ae
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: talk_time_customer_min
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: a823dcb0-9d41-44dd-8354-be310e6446b0
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 6ff08884-4dcc-4191-a29a-f11e3c282f57
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 7c864200-56ad-494e-9893-3b444115c0f9
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: talk_time_customer_min
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: af13f831-2a28-4c37-9f12-72694bfa8444
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 03838d6b-798b-43b1-a5e7-1d29e05fe0c5
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 2a2b7f85-9ff7-4335-8a36-7c76ecbc3c9b
+          Filters:
+          - NumericRangeFilter:
+              Column:
+                ColumnName: talk_time_customer_min
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 22146bd9-2e8d-4f0b-9a17-2123a97b07c0
+              IncludeMaximum: false
+              IncludeMinimum: false
+              NullOption: NON_NULLS_ONLY
+              RangeMinimum:
+                StaticValue: 0.0
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 03838d6b-798b-43b1-a5e7-1d29e05fe0c5
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 993455ba-f976-4b19-bd13-5fb6eaa690e2
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: contact_id
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 17cadbd3-fc24-4fa4-8122-c522ae88528d
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: c41100e4-1297-4cd6-b1ff-415bcd2a9451
+                VisualIds:
+                - 5d56819f-894c-4469-b3ba-69916950bc97
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 8b9d7199-13db-43a1-8c3b-a991cda710b6
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: disconnect_reason
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 82d7185f-e1b2-4847-8e27-779ff035361a
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: c41100e4-1297-4cd6-b1ff-415bcd2a9451
+                VisualIds:
+                - 99b841fc-cc9f-4b7c-b974-73b7c7f491dd
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 450aafc3-74e1-4a2a-8c74-d393b81270f5
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: c87864e7-8a00-4d09-9d83-f1ae2f7ee38a
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: c41100e4-1297-4cd6-b1ff-415bcd2a9451
+                VisualIds:
+                - 28cf9e83-6fe8-48fe-8ad5-3ab2c7b88a06
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 584bdf88-c596-4739-8b20-a4255ee378f4
+          Filters:
+          - NumericRangeFilter:
+              AggregationFunction:
+                NumericalAggregationFunction:
+                  SimpleNumericalAggregation: AVERAGE
+              Column:
+                ColumnName: talk_speed_agent_wpm
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              FilterId: 5a663444-4192-443c-8353-bbd2662d59f0
+              IncludeMaximum: false
+              IncludeMinimum: false
+              NullOption: NON_NULLS_ONLY
+              RangeMinimum:
+                StaticValue: 0.0
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+                VisualIds:
+                - 0e4c072e-9134-4684-a878-33ce4013dcef
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 1ccf0a41-fd7e-45b2-996e-7326c4547078
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: category
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                FilterListConfiguration:
+                  MatchOperator: DOES_NOT_CONTAIN
+                  NullOption: ALL_VALUES
+              FilterId: 2cda648e-25c0-453b-b94f-7deff1421e92
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: c41100e4-1297-4cd6-b1ff-415bcd2a9451
+                VisualIds:
+                - 92fa51ed-a4f8-4cac-913b-11ac2e7c1359
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: a9466cee-2827-495b-a57e-39348ef4dbfa
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: d46e0c3f-6c61-4177-94c4-0538819a381f
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: c41100e4-1297-4cd6-b1ff-415bcd2a9451
+                VisualIds:
+                - 13e4f1fe-dc0f-4239-86e6-aeaff4a122da
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: cde5eccd-28e8-4726-ac92-849ce24a82ca
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: instance_id
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: InstanceId
+              FilterId: cc8157e2-a0e3-4442-aa60-d63a463137b9
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 5d8d1a1d-cac8-476e-820d-b65ddbe54ddf
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: category
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: ALL_VALUES
+                  ParameterName: Category
+              FilterId: 071e802b-32c2-42c8-926f-4b8bd3a59851
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: ALL_VISUALS
+                SheetId: c41100e4-1297-4cd6-b1ff-415bcd2a9451
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: fb0ef140-591e-4a4e-95ac-cd3a1290b1ae
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 79fa56cf-1206-429f-8f77-4abc7c9bfaa0
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: a707c884-8c9a-49d3-9934-bdeab85e5b0e
+                VisualIds:
+                - 311efd76-0f8b-4bbf-9dbf-5d590015f5db
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 7465a353-326d-47ef-82fd-e9fd4c623599
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 1be706ce-3e66-4d38-9f13-71ee1c981b78
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: a707c884-8c9a-49d3-9934-bdeab85e5b0e
+                VisualIds:
+                - ff4f6868-00f1-46dd-bdf8-53f79180ba74
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 32acbd86-ebd6-4450-9055-5847d3c085ef
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: d3252828-e025-4380-8ca4-4a3aab24c81c
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: a707c884-8c9a-49d3-9934-bdeab85e5b0e
+                VisualIds:
+                - 91600ac4-5737-4835-9865-00c06f7ff735
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: cbddc49c-2d18-43d9-9897-c56529c43137
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                  Lens
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: b1368225-c362-4bf2-8f7c-1eb632a70061
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: a707c884-8c9a-49d3-9934-bdeab85e5b0e
+                VisualIds:
+                - 4dc0a6cb-0dcd-40d0-ad63-79408f8cfe2c
+          Status: ENABLED
+        ParameterDeclarations:
+        - IntegerParameterDeclaration:
+            DefaultValues:
+              StaticValues:
+              - 365
+            Name: LastNDays
+            ParameterValueType: SINGLE_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - IntegerParameterDeclaration:
+            DefaultValues:
+              StaticValues:
+              - 5
+            Name: TopBottomN
+            ParameterValueType: SINGLE_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: Channel
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: Queue
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: Agent
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: RoutingProfile
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: Category
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues:
+              StaticValues: []
+            Name: InitiationMethod
+            ParameterValueType: SINGLE_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: InstanceId
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        Sheets:
+        - ContentType: INTERACTIVE
+          Layouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 5
+                  ElementId: 7d741369-e869-441e-a26a-6c90317e6fca
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 5
+                  ColumnSpan: 5
+                  ElementId: bd981d3e-d6f8-4384-a234-840f8967c25c
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 10
+                  ColumnSpan: 5
+                  ElementId: fa8a1098-8eac-4128-b82e-2468de69b213
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 15
+                  ColumnSpan: 6
+                  ElementId: 41f88f32-0008-4e16-93e5-c19ed04e24ff
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 21
+                  ColumnSpan: 5
+                  ElementId: c263fc4e-fde8-4764-a681-1537c3f12ea3
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 26
+                  ColumnSpan: 5
+                  ElementId: af2c6b83-0589-489e-9f5d-ce2397442339
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 31
+                  ColumnSpan: 5
+                  ElementId: 8e24678e-3a25-4d32-8b2c-ae7b9f085b19
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 0
+                  ColumnSpan: 18
+                  ElementId: 6d3c16d1-2f3c-49f6-ada6-9ed955ec14a5
+                  ElementType: VISUAL
+                  RowIndex: 2
+                  RowSpan: 7
+                - ColumnIndex: 18
+                  ColumnSpan: 18
+                  ElementId: 7b9aa6a0-ba23-465a-a861-c37793289849
+                  ElementType: VISUAL
+                  RowIndex: 2
+                  RowSpan: 7
+                - ColumnIndex: 0
+                  ColumnSpan: 18
+                  ElementId: f73f566b-e0be-4c15-8584-4ec4771f96fb
+                  ElementType: VISUAL
+                  RowIndex: 9
+                  RowSpan: 7
+                - ColumnIndex: 18
+                  ColumnSpan: 18
+                  ElementId: 46a42155-69a3-450e-a549-18b508391ebb
+                  ElementType: VISUAL
+                  RowIndex: 9
+                  RowSpan: 7
+                - ColumnIndex: 0
+                  ColumnSpan: 18
+                  ElementId: ec4ad25a-91b6-430a-afd1-42dcebc314b4
+                  ElementType: VISUAL
+                  RowIndex: 16
+                  RowSpan: 7
+                - ColumnIndex: 18
+                  ColumnSpan: 18
+                  ElementId: f94c1e6e-96a3-480c-b8de-187dff12ed8e
+                  ElementType: VISUAL
+                  RowIndex: 16
+                  RowSpan: 7
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: 96ef4ea8-62c2-4594-b860-7cba19c28e05
+                  ElementType: VISUAL
+                  RowIndex: 23
+                  RowSpan: 5
+                - ColumnIndex: 9
+                  ColumnSpan: 9
+                  ElementId: 7d8a11c8-cf62-4229-959a-932382df461d
+                  ElementType: VISUAL
+                  RowIndex: 23
+                  RowSpan: 5
+                - ColumnIndex: 18
+                  ColumnSpan: 9
+                  ElementId: 91600ac4-5737-4835-9865-00c06f7ff735
+                  ElementType: VISUAL
+                  RowIndex: 23
+                  RowSpan: 5
+                - ColumnIndex: 27
+                  ColumnSpan: 9
+                  ElementId: 4dc0a6cb-0dcd-40d0-ad63-79408f8cfe2c
+                  ElementType: VISUAL
+                  RowIndex: 23
+                  RowSpan: 5
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: 91feecd2-4a14-427a-ab2c-2c4b56bd1ba9
+                  ElementType: VISUAL
+                  RowIndex: 28
+                  RowSpan: 5
+                - ColumnIndex: 9
+                  ColumnSpan: 9
+                  ElementId: 311efd76-0f8b-4bbf-9dbf-5d590015f5db
+                  ElementType: VISUAL
+                  RowIndex: 28
+                  RowSpan: 5
+                - ColumnIndex: 18
+                  ColumnSpan: 9
+                  ElementId: ff4f6868-00f1-46dd-bdf8-53f79180ba74
+                  ElementType: VISUAL
+                  RowIndex: 28
+                  RowSpan: 5
+          Name: Contact Lens
+          ParameterControls:
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: e83a01be-825a-408e-b88e-cde400f770f0
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: channel
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: Channel
+              Title: Channel
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: cb4f4c57-295d-471a-b451-90098fb5a0bf
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: queue_name
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: Queue
+              Title: Queue
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 167e07bc-13fd-4422-9f6a-ef8ec7e671e1
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_username
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: Agent
+              Title: Agent
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 4c9b7036-d6d7-47a7-b486-e7ffa8ff7659
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_routing_profile_name
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: RoutingProfile
+              Title: Routing Profile
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 9f6a3b61-d512-46e0-a32d-015b59870744
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: initiation_method
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: InitiationMethod
+              Title: Initiation Method
+              Type: SINGLE_SELECT
+          - Dropdown:
+              DisplayOptions:
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 7b40130a-7886-4d0a-8118-5468849de024
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: instance_id
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: InstanceId
+              Title: Instance Id
+              Type: MULTI_SELECT
+          - Slider:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              MaximumValue: 365.0
+              MinimumValue: 7.0
+              ParameterControlId: 3dceb1c7-9eec-4c3a-8fd2-66001a9814e5
+              SourceParameterName: LastNDays
+              StepSize: 1.0
+              Title: Last N Days
+          SheetControlLayouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: 3dceb1c7-9eec-4c3a-8fd2-66001a9814e5
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 2
+                  ColumnSpan: 2
+                  ElementId: e83a01be-825a-408e-b88e-cde400f770f0
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 4
+                  ColumnSpan: 2
+                  ElementId: cb4f4c57-295d-471a-b451-90098fb5a0bf
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnSpan: 3
+                  ElementId: 167e07bc-13fd-4422-9f6a-ef8ec7e671e1
+                  ElementType: PARAMETER_CONTROL
+                  RowSpan: 1
+                - ColumnSpan: 3
+                  ElementId: 4c9b7036-d6d7-47a7-b486-e7ffa8ff7659
+                  ElementType: PARAMETER_CONTROL
+                  RowSpan: 1
+                - ColumnSpan: 3
+                  ElementId: 9f6a3b61-d512-46e0-a32d-015b59870744
+                  ElementType: PARAMETER_CONTROL
+                  RowSpan: 1
+                - ColumnSpan: 2
+                  ElementId: 7b40130a-7886-4d0a-8118-5468849de024
+                  ElementType: PARAMETER_CONTROL
+                  RowSpan: 1
+          SheetId: a707c884-8c9a-49d3-9934-bdeab85e5b0e
+          Visuals:
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Queue
+                    FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Width: 360px
+                  - CustomLabel: Talk Duration
+                    FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650582364962
+                    Width: 104px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_time_agent_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650582364962
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650582364962
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Agent Talk Duration by Queue (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 91600ac4-5737-4835-9865-00c06f7ff735
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Queue
+                    FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Width: 344px
+                  - CustomLabel: Non-Talk Duration
+                    FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650582192567
+                    Width: 104px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: non_talk_time_total_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650582192567
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650582192567
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Non-Talk Duration by Queue (average)\n  <br/>\n
+                    \ <inline color=\"#16191f\" font-size=\"12px\">\n    <i>Combined duration
+                    of hold time and periods of silence exceeding 3 seconds.</i>\n  </inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: ff4f6868-00f1-46dd-bdf8-53f79180ba74
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Queue
+                    FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Width: 359px
+                  - CustomLabel: Talk Duration
+                    FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650582426398
+                    Width: 104px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_time_customer_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650582426398
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650582426398
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Customer Talk Duration by Queue (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 4dc0a6cb-0dcd-40d0-ad63-79408f8cfe2c
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Queue
+                    FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Width: 265px
+                  - CustomLabel: Duration
+                    FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650581892097
+                    Width: 183px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: total_conversation_duration_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650581892097
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650581892097
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Total Conversation Duration by Queue (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 311efd76-0f8b-4bbf-9dbf-5d590015f5db
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Queue
+                    FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Width: 358px
+                  - CustomLabel: Talk Speed
+                    FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_speed_agent_wpm.1.1650582112072
+                    Width: 104px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_speed_agent_wpm
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_speed_agent_wpm.1.1650582112072
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              DecimalPlacesConfiguration:
+                                DecimalPlaces: 1
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' wpm'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_speed_agent_wpm.1.1650582112072
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Agent Talk Speed by Queue (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 91feecd2-4a14-427a-ab2c-2c4b56bd1ba9
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Queue
+                    FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Width: 305px
+                  - CustomLabel: Sentiment
+                    FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650581777063
+                    Width: 146px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: sentiment_overall_score_agent
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650581777063
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650581777063
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Agent Sentiment by Queue (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 7d8a11c8-cf62-4229-959a-932382df461d
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        HierarchyId: 032df35d-6c95-4d21-b3a2-d070e86588d0
+                    Colors: []
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_time_agent_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650581353051
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650581353051
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueAxis:
+                  AxisOffset: 53px
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: 032df35d-6c95-4d21-b3a2-d070e86588d0
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Agent Talk Duration by Day\n  <br/>\n  (average)\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: f94c1e6e-96a3-480c-b8de-187dff12ed8e
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        HierarchyId: 05e7d316-adb8-432a-af81-2ec6373e4c42
+                    Colors: []
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_time_customer_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650581299148
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650581299148
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueAxis:
+                  AxisOffset: 49px
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: 05e7d316-adb8-432a-af81-2ec6373e4c42
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Customer Talk Duration by Day\n  <br/>\n
+                    \ (average)\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: ec4ad25a-91b6-430a-afd1-42dcebc314b4
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        HierarchyId: d6cae157-d85e-4f29-8cd4-b396179eb58d
+                    Colors: []
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: non_talk_time_total_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650581216579
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650581216579
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueAxis:
+                  AxisOffset: 60px
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: d6cae157-d85e-4f29-8cd4-b396179eb58d
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Non-Talk Duration by Day - \n  <inline color=\"#16191f\"
+                    font-size=\"12px\">\n    <i>Combined duration of hold time and periods
+                    of silence exceeding 3 seconds.</i>\n  </inline>\n  <br/>\n  (average)\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 46a42155-69a3-450e-a549-18b508391ebb
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        HierarchyId: 453262e7-1a6d-4b32-93ea-dc67d5536ee1
+                    Colors: []
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: total_conversation_duration_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650581169827
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650581169827
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueAxis:
+                  AxisOffset: 51px
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: 453262e7-1a6d-4b32-93ea-dc67d5536ee1
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Conversation Duration by Day\n  <br/>\n  <inline
+                    font-size=\"14px\">(average)</inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: f73f566b-e0be-4c15-8584-4ec4771f96fb
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        HierarchyId: 5fb07be3-984b-4be7-b5ec-568ceef5ed6d
+                    Colors: []
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: sentiment_overall_score_agent
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650581113770
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650581113770
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: 5fb07be3-984b-4be7-b5ec-568ceef5ed6d
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Agent Sentiment by Day\n  <br/>\n  (a\n  <inline
+                    font-size=\"14px\">verage</inline>\n  )\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 7b9aa6a0-ba23-465a-a861-c37793289849
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: talk_time_customer_min
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.0.1650581065073
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\"> Customer Talk Duration</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 8e24678e-3a25-4d32-8b2c-ae7b9f085b19
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: talk_time_agent_min
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.0.1650580957700
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Agent Talk Duration</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: af2c6b83-0589-489e-9f5d-ce2397442339
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: non_talk_time_total_min
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.0.1650580887647
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Non-Talk Duration</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: c263fc4e-fde8-4764-a681-1537c3f12ea3
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: talk_speed_agent_wpm
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_speed_agent_wpm.0.1650580818427
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            DecimalPlacesConfiguration:
+                              DecimalPlaces: 1
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' wpm'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Agent Talk Speed</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 41f88f32-0008-4e16-93e5-c19ed04e24ff
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: total_conversation_duration_min
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.0.1650580734639
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Conversation Duration</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: fa8a1098-8eac-4128-b82e-2468de69b213
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: sentiment_overall_score_agent
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.0.1650580540339
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Agent Sentiment</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: bd981d3e-d6f8-4384-a234-840f8967c25c
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: sentiment_overall_score_customer
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.0.1650580253425
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Customer Sentiment</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 7d741369-e869-441e-a26a-6c90317e6fca
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryAxis:
+                  ScrollbarOptions:
+                    VisibleRange:
+                      PercentRange:
+                        From: 0.0
+                        To: 100.0
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        HierarchyId: 7caa8529-91be-414d-907f-b67947f3d8fb
+                    Colors: []
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: sentiment_overall_score_customer
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650580347819
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.initiation_timestamp.0.1650580327714
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650580347819
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: 7caa8529-91be-414d-907f-b67947f3d8fb
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Customer Sentiment by Day\n  <br/>\n  (average)\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 6d3c16d1-2f3c-49f6-ada6-9ed955ec14a5
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Queue
+                    FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Width: 304px
+                  - CustomLabel: Sentiment
+                    FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650581586499
+                    Width: 148px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.queue_name.0.1650581563338
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: sentiment_overall_score_customer
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650581586499
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650581586499
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Customer Sentiment by Queue (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 96ef4ea8-62c2-4594-b860-7cba19c28e05
+        - ContentType: INTERACTIVE
+          Layouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 6
+                  ElementId: 54cb9491-6706-410f-a384-c4ce5622f722
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 6
+                  ColumnSpan: 5
+                  ElementId: e92513ac-5c30-4e87-9cd5-8bcbb2a5d176
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 11
+                  ColumnSpan: 5
+                  ElementId: 53f72cf2-abb0-42de-bbb2-c9f9b4429286
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 16
+                  ColumnSpan: 5
+                  ElementId: 1a9e36eb-e673-4702-acf1-0966458845af
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 21
+                  ColumnSpan: 5
+                  ElementId: 80a17103-2c66-40e4-badb-760dc7dbce37
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 26
+                  ColumnSpan: 5
+                  ElementId: e0898650-900a-43ad-8dda-dfcf835393e8
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 31
+                  ColumnSpan: 5
+                  ElementId: 89d23b13-f235-479b-9df4-32120e2baf19
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 0
+                  ColumnSpan: 13
+                  ElementId: 92fa51ed-a4f8-4cac-913b-11ac2e7c1359
+                  ElementType: VISUAL
+                  RowIndex: 2
+                  RowSpan: 7
+                - ColumnIndex: 13
+                  ColumnSpan: 23
+                  ElementId: db7e61f5-7a62-4b55-a321-4dc1ddad48c0
+                  ElementType: VISUAL
+                  RowIndex: 2
+                  RowSpan: 7
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: 28cf9e83-6fe8-48fe-8ad5-3ab2c7b88a06
+                  ElementType: VISUAL
+                  RowIndex: 9
+                  RowSpan: 7
+                - ColumnIndex: 9
+                  ColumnSpan: 5
+                  ElementId: 6f32d48a-dbad-4ebe-b1e1-0d834698f3f2
+                  ElementType: VISUAL
+                  RowIndex: 9
+                  RowSpan: 7
+                - ColumnIndex: 14
+                  ColumnSpan: 7
+                  ElementId: 99b841fc-cc9f-4b7c-b974-73b7c7f491dd
+                  ElementType: VISUAL
+                  RowIndex: 9
+                  RowSpan: 7
+                - ColumnIndex: 21
+                  ColumnSpan: 8
+                  ElementId: 13e4f1fe-dc0f-4239-86e6-aeaff4a122da
+                  ElementType: VISUAL
+                  RowIndex: 9
+                  RowSpan: 7
+                - ColumnIndex: 29
+                  ColumnSpan: 7
+                  ElementId: d95da8f1-f7c6-4828-a049-106d0d86bd26
+                  ElementType: VISUAL
+                  RowIndex: 9
+                  RowSpan: 7
+                - ColumnIndex: 0
+                  ColumnSpan: 36
+                  ElementId: 5d56819f-894c-4469-b3ba-69916950bc97
+                  ElementType: VISUAL
+                  RowIndex: 16
+                  RowSpan: 12
+          Name: Category Analysis
+          ParameterControls:
+          - List:
+              DisplayOptions:
+                SearchOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: d0d334eb-da63-4fec-9a1e-12c8ff75b7ce
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: initiation_method
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: InitiationMethod
+              Title: Initiation Method
+              Type: SINGLE_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 1ca97849-0c34-46f2-8f9d-706df377c984
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: channel
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: Channel
+              Title: Channel
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: f95bbb0e-9d0b-430d-8187-7c697d18fad3
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: queue_name
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: Queue
+              Title: Queue
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 2c30dbc6-dd15-476a-b92b-3930962c5b75
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_username
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: Agent
+              Title: Agent
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: d04e4a24-c52a-4f00-b386-aa1dc1ed7a98
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_routing_profile_name
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: RoutingProfile
+              Title: Routing Profile
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: cace7e00-bd0d-475a-a9e7-18cad8580c0d
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: category
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: Category
+              Title: Categories
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 2b4ec754-ac01-4a9d-9168-84adcd028cbe
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: instance_id
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: InstanceId
+              Title: Instance Id
+              Type: MULTI_SELECT
+          - Slider:
+              DisplayOptions:
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              MaximumValue: 365.0
+              MinimumValue: 7.0
+              ParameterControlId: 7d66ee5e-b8e7-4b22-8246-54d514655f16
+              SourceParameterName: LastNDays
+              StepSize: 1.0
+              Title: Last N Days
+          SheetControlLayouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: 7d66ee5e-b8e7-4b22-8246-54d514655f16
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 2
+                  ColumnSpan: 2
+                  ElementId: 1ca97849-0c34-46f2-8f9d-706df377c984
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 4
+                  ColumnSpan: 2
+                  ElementId: f95bbb0e-9d0b-430d-8187-7c697d18fad3
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 6
+                  ColumnSpan: 3
+                  ElementId: 2c30dbc6-dd15-476a-b92b-3930962c5b75
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 9
+                  ColumnSpan: 3
+                  ElementId: d04e4a24-c52a-4f00-b386-aa1dc1ed7a98
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: d0d334eb-da63-4fec-9a1e-12c8ff75b7ce
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+                - ColumnIndex: 2
+                  ColumnSpan: 2
+                  ElementId: 2b4ec754-ac01-4a9d-9168-84adcd028cbe
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+                - ColumnIndex: 4
+                  ColumnSpan: 3
+                  ElementId: cace7e00-bd0d-475a-a9e7-18cad8580c0d
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+          SheetId: c41100e4-1297-4cd6-b1ff-415bcd2a9451
+          Visuals:
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Category
+                    FieldId: 6f1dc5cb-0167-48dd-84bf-73289f87203a.category.1.1650173303383
+                    Width: 227px
+                  - CustomLabel: '# Contacts'
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                    Width: 91px
+                  - CustomLabel: Contact Duration (avg)
+                    FieldId: 92c6c6cb-fe33-4506-a560-4b8787554f87.total_conversation_duration_min.2.1723467417667
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: category
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: 6f1dc5cb-0167-48dd-84bf-73289f87203a.category.1.1650173303383
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: total_conversation_duration_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: 92c6c6cb-fe33-4506-a560-4b8787554f87.total_conversation_duration_min.2.1723467417667
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+                TotalOptions:
+                  Placement: END
+                  TotalsVisibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Contacts by Category</visual-title>
+                Visibility: VISIBLE
+              VisualId: 28cf9e83-6fe8-48fe-8ad5-3ab2c7b88a06
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Agent
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.agent_username.1.1650172791953
+                    Width: 207px
+                  - CustomLabel: '# Contacts'
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                    Width: 83px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.agent_username.1.1650172791953
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Contacts by Agent</visual-title>
+                Visibility: VISIBLE
+              VisualId: d95da8f1-f7c6-4828-a049-106d0d86bd26
+          - WordCloudVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  WordCloudAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: category
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: 6f1dc5cb-0167-48dd-84bf-73289f87203a.category.1.1650172657513
+                    Size:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                WordCloudOptions: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Categories Assigned to Contacts\n  <br/>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 92fa51ed-a4f8-4cac-913b-11ac2e7c1359
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Queue
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.queue_name.1.1650172307695
+                    Width: 150px
+                  - CustomLabel: '# Contacts'
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                    Width: 92px
+                  - CustomLabel: Time in Queue (avg)
+                    FieldId: 36f06e3f-47a4-4cef-9047-75396ae2e31d.queue_duration_min.2.1723467646684
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.queue_name.1.1650172307695
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: queue_duration_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: 36f06e3f-47a4-4cef-9047-75396ae2e31d.queue_duration_min.2.1723467646684
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Queue Details</visual-title>
+                Visibility: VISIBLE
+              VisualId: 13e4f1fe-dc0f-4239-86e6-aeaff4a122da
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Endpoint Address
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.system_endpoint_address.1.1650172111561
+                    Width: 133px
+                  - CustomLabel: '# Contacts'
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                    Width: 101px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: system_endpoint_address
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.system_endpoint_address.1.1650172111561
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172241396
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Contacts by Endpoint Address</visual-title>
+                Visibility: VISIBLE
+              VisualId: 6f32d48a-dbad-4ebe-b1e1-0d834698f3f2
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_interaction_duration_min
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.agent_interaction_duration_min.0.1650171513967
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Agent/Contact Interaction
+                    Time</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 80a17103-2c66-40e4-badb-760dc7dbce37
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: queue_duration_min
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.queue_duration_min.0.1650171585829
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Time in Queue</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: e0898650-900a-43ad-8dda-dfcf835393e8
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_number_of_holds
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.agent_number_of_holds.0.1650171625646
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\"># of Holds Placed
+                    by Agent</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 89d23b13-f235-479b-9df4-32120e2baf19
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_after_contact_work_duration_min
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.agent_after_contact_work_duration_min.0.1650171345220
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Time Spent on After
+                    Contact Work</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 53f72cf2-abb0-42de-bbb2-c9f9b4429286
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_customer_hold_duration_min
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.agent_customer_hold_duration_min.0.1650171395674
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Agent/Contact Time
+                    on Hold</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 1a9e36eb-e673-4702-acf1-0966458845af
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: total_duration_min
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: 00ff9b6f-5dd1-4ffb-a9d1-58847e7983b3.0.1650171202388
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Contact Duration</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: e92513ac-5c30-4e87-9cd5-8bcbb2a5d176
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Contact ID
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.7.1650170563496
+                  - CustomLabel: Contact Initiated At
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.initiation_timestamp.7.1650170429787
+                  - CustomLabel: Customer Endpoint
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.customer_endpoint_address.1.1650170429787
+                    Width: 171px
+                  - CustomLabel: Queue Name
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.queue_name.2.1650170429787
+                    Width: 216px
+                  - CustomLabel: Agent Username
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.agent_username.3.1650170429787
+                    Width: 389px
+                  - CustomLabel: Channel
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.channel.4.1650170429787
+                  - CustomLabel: Routing Profile
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.agent_routing_profile_name.5.1650170429787
+                  - CustomLabel: Category
+                    FieldId: 6f1dc5cb-0167-48dd-84bf-73289f87203a.category.6.1650170429787
+                    Width: 352px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.7.1650170563496
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.initiation_timestamp.7.1650170429787
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: customer_endpoint_address
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.customer_endpoint_address.1.1650170429787
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.queue_name.2.1650170429787
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.agent_username.3.1650170429787
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: channel
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.channel.4.1650170429787
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_routing_profile_name
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.agent_routing_profile_name.5.1650170429787
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: category
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: 6f1dc5cb-0167-48dd-84bf-73289f87203a.category.6.1650170429787
+                    Values: []
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.initiation_timestamp.7.1650170429787
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Contact Category Details</visual-title>
+                Visibility: VISIBLE
+              VisualId: 5d56819f-894c-4469-b3ba-69916950bc97
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - CategoricalMeasureField:
+                      AggregationFunction: DISTINCT_COUNT
+                      Column:
+                        ColumnName: contact_id
+                        DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                          Contact Lens
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.0.1650171029448
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\"># of Contacts</block>\n
+                    \ <br/>\n  <block align=\"center\">(total)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 54cb9491-6706-410f-a384-c4ce5622f722
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        DateGranularity: DAY
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.initiation_timestamp.1.1650171701758
+                        HierarchyId: 4cdfee45-ed82-4b7f-8003-d061c97bddfe
+                    Colors: []
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.0.1650171701758
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.initiation_timestamp.1.1650171701758
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.initiation_timestamp.1.1650171701758
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.0.1650171701758
+                        Label: '# of contacts'
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: 4cdfee45-ed82-4b7f-8003-d061c97bddfe
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  # of Contacts by Day\n  <br/>\n  (total)\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: db7e61f5-7a62-4b55-a321-4dc1ddad48c0
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Reason
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.disconnect_reason.0.1650171875859
+                    Width: 211px
+                  - CustomLabel: '# Disconnects'
+                    FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172266854
+                    Width: 122px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: disconnect_reason
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.disconnect_reason.0.1650171875859
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172266854
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: da358775-8dd8-4a08-8d04-224b0c009028.contact_id.1.1650172266854
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Reason of Disconnect</visual-title>
+                Visibility: VISIBLE
+              VisualId: 99b841fc-cc9f-4b7c-b974-73b7c7f491dd
+        - ContentType: INTERACTIVE
+          Layouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: 687a3667-b542-4697-ad24-9a8065911255
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 4
+                - ColumnIndex: 9
+                  ColumnSpan: 9
+                  ElementId: 0f131648-a0ef-4050-8b89-9130d6a9eb2c
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 4
+                - ColumnIndex: 18
+                  ColumnSpan: 9
+                  ElementId: 917a9ab1-5623-4d2e-b69c-0973ca24a0cb
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 4
+                - ColumnIndex: 27
+                  ColumnSpan: 9
+                  ElementId: 7cd52fb6-eccb-4f67-94c8-e35dbe8c5f20
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 4
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: c8acdae9-2f42-4542-80ea-a1275141298f
+                  ElementType: VISUAL
+                  RowIndex: 4
+                  RowSpan: 4
+                - ColumnIndex: 9
+                  ColumnSpan: 9
+                  ElementId: ce08911b-10f8-410c-86de-d1442f21214f
+                  ElementType: VISUAL
+                  RowIndex: 4
+                  RowSpan: 4
+                - ColumnIndex: 18
+                  ColumnSpan: 9
+                  ElementId: 6ff08884-4dcc-4191-a29a-f11e3c282f57
+                  ElementType: VISUAL
+                  RowIndex: 4
+                  RowSpan: 4
+                - ColumnIndex: 27
+                  ColumnSpan: 9
+                  ElementId: 03838d6b-798b-43b1-a5e7-1d29e05fe0c5
+                  ElementType: VISUAL
+                  RowIndex: 4
+                  RowSpan: 4
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: ffcfd47c-80f6-408d-bae7-8dba38d81c88
+                  ElementType: VISUAL
+                  RowIndex: 8
+                  RowSpan: 4
+                - ColumnIndex: 9
+                  ColumnSpan: 9
+                  ElementId: effd07f7-091f-4e5d-92ac-63329fbb5a67
+                  ElementType: VISUAL
+                  RowIndex: 8
+                  RowSpan: 4
+                - ColumnIndex: 18
+                  ColumnSpan: 9
+                  ElementId: af28a300-4860-4060-81a9-73a5219e4794
+                  ElementType: VISUAL
+                  RowIndex: 8
+                  RowSpan: 4
+                - ColumnIndex: 27
+                  ColumnSpan: 9
+                  ElementId: 0e4c072e-9134-4684-a878-33ce4013dcef
+                  ElementType: VISUAL
+                  RowIndex: 8
+                  RowSpan: 4
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: 86e4eff0-9a2c-4087-b0c4-3abc0870e171
+                  ElementType: VISUAL
+                  RowIndex: 12
+                  RowSpan: 4
+                - ColumnIndex: 9
+                  ColumnSpan: 9
+                  ElementId: 8879f65f-2aab-4496-b2d9-8350ec10aeca
+                  ElementType: VISUAL
+                  RowIndex: 12
+                  RowSpan: 4
+          Name: Agent ContactLens Leaderboard
+          ParameterControls:
+          - List:
+              DisplayOptions:
+                SearchOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 39594074-e1a5-4fe7-8799-f59db0814ee7
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: initiation_method
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: InitiationMethod
+              Title: Initiation Method
+              Type: SINGLE_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 400d7f6f-9c06-4ce3-b5f4-3d49f2db01b9
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: channel
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: Channel
+              Title: Channel
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 3b968c9c-995d-4d98-b432-d1ea44cd99a7
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_username
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: Agent
+              Title: Agent
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: babf7624-406b-4f4c-9341-541bcbafac9b
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_routing_profile_name
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: RoutingProfile
+              Title: Routing Profile
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 916e15e9-10dd-4de5-828f-d38bbd64e10a
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: queue_name
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: Queue
+              Title: Queue
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 7352e639-874d-4aba-8f11-a3083dae742b
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: instance_id
+                  DataSetIdentifier: ContactLensQS - Connect Contact Records With Contact
+                    Lens
+              SourceParameterName: InstanceId
+              Title: Instance Id
+              Type: MULTI_SELECT
+          - Slider:
+              DisplayOptions:
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              MaximumValue: 365.0
+              MinimumValue: 7.0
+              ParameterControlId: 3fb8522f-2eb9-480c-af76-c131546f59c8
+              SourceParameterName: LastNDays
+              StepSize: 1.0
+              Title: Last N Days
+          - TextField:
+              DisplayOptions:
+                PlaceholderOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 27decc85-19a7-4c8f-96a0-83efa4fa00b4
+              SourceParameterName: TopBottomN
+              Title: Top/Bottom N Results
+          SheetControlLayouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: 3fb8522f-2eb9-480c-af76-c131546f59c8
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 2
+                  ColumnSpan: 2
+                  ElementId: 400d7f6f-9c06-4ce3-b5f4-3d49f2db01b9
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 4
+                  ColumnSpan: 2
+                  ElementId: 916e15e9-10dd-4de5-828f-d38bbd64e10a
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 6
+                  ColumnSpan: 3
+                  ElementId: 3b968c9c-995d-4d98-b432-d1ea44cd99a7
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 9
+                  ColumnSpan: 3
+                  ElementId: babf7624-406b-4f4c-9341-541bcbafac9b
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: 39594074-e1a5-4fe7-8799-f59db0814ee7
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+                - ColumnIndex: 2
+                  ColumnSpan: 2
+                  ElementId: 7352e639-874d-4aba-8f11-a3083dae742b
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+                - ColumnIndex: 4
+                  ColumnSpan: 3
+                  ElementId: 27decc85-19a7-4c8f-96a0-83efa4fa00b4
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+          SheetId: 6bd9ec77-7867-4223-ad0e-264bd4842a79
+          Visuals:
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 322px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650575887945
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_time_customer_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650575887945
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650575887945
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <inline font-size=\"14px\">Shortest</inline>\n
+                    \ <inline font-size=\"14px\"/>\n  <inline font-size=\"14px\"> Customer
+                    Talk Duration (average)</inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 03838d6b-798b-43b1-a5e7-1d29e05fe0c5
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 324px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650575887945
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_time_customer_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650575887945
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_customer_min.1.1650575887945
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <inline font-size=\"14px\">Longest Customer
+                    Talk Duration (average)</inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 6ff08884-4dcc-4191-a29a-f11e3c282f57
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 325px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650575379115
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: total_conversation_duration_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650575379115
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650575379115
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Shortest Total Conversation Duration (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 7cd52fb6-eccb-4f67-94c8-e35dbe8c5f20
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 327px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650575379115
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: total_conversation_duration_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650575379115
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.total_conversation_duration_min.1.1650575379115
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Longest Total Conversation Duration (average)\n
+                    \ <br/>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 917a9ab1-5623-4d2e-b69c-0973ca24a0cb
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 321px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650575101793
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_time_agent_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650575101793
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650575101793
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <inline font-size=\"14px\">Shortest Agent
+                    Talk Duration (average)</inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: effd07f7-091f-4e5d-92ac-63329fbb5a67
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 320px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650575101793
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_time_agent_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650575101793
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_time_agent_min.1.1650575101793
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Longest Agent Talk Duration (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: ffcfd47c-80f6-408d-bae7-8dba38d81c88
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 322px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650574875786
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: sentiment_overall_score_agent
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650574875786
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650574875786
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Highest Agent Sentiment (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: c8acdae9-2f42-4542-80ea-a1275141298f
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 321px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650574875786
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: sentiment_overall_score_agent
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650574875786
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_agent.1.1650574875786
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Lowest Agent Sentiment (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: ce08911b-10f8-410c-86de-d1442f21214f
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 325px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650574487604
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: non_talk_time_total_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650574487604
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650574487604
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Longest Non-Talk Duration (average)\n  <br/>\n
+                    \ <inline color=\"#16191f\" font-size=\"12px\">\n    <i>Combined duration
+                    of hold time and periods of silence exceeding 3 seconds.</i>\n  </inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 86e4eff0-9a2c-4087-b0c4-3abc0870e171
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 320px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650574487604
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: non_talk_time_total_min
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650574487604
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' min'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.non_talk_time_total_min.1.1650574487604
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Shortest Non-Talk Duration (average)\n  <br/>\n
+                    \ <inline color=\"#16191f\" font-size=\"12px\">\n    <i>Combined duration
+                    of hold time and periods of silence exceeding 3 seconds.</i>\n  </inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 8879f65f-2aab-4496-b2d9-8350ec10aeca
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 325px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650573933169
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: sentiment_overall_score_customer
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650573933169
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650573933169
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Lowest Customer Sentiment (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 0f131648-a0ef-4050-8b89-9130d6a9eb2c
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 328px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650573933169
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: sentiment_overall_score_customer
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650573933169
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.sentiment_overall_score_customer.1.1650573933169
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Highest Customer Sentiment (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 687a3667-b542-4697-ad24-9a8065911255
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 324px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_speed_agent_wpm.1.1650231646827
+                    Width: 123px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_speed_agent_wpm
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_speed_agent_wpm.1.1650231646827
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              DecimalPlacesConfiguration:
+                                DecimalPlaces: 1
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' wpm'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_speed_agent_wpm.1.1650231646827
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <inline font-size=\"14px\">Slowest Agent
+                    Talk Speed (average)</inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 0e4c072e-9134-4684-a878-33ce4013dcef
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Width: 327px
+                  - FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_speed_agent_wpm.1.1650231646827
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: f1357500-8400-4c1e-a326-963b301c4f69.agent_username.1.1650231619840
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: talk_speed_agent_wpm
+                          DataSetIdentifier: ContactLensQS - Connect Contact Records With
+                            Contact Lens
+                        FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_speed_agent_wpm.1.1650231646827
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              DecimalPlacesConfiguration:
+                                DecimalPlaces: 1
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                              Suffix: ' wpm'
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: ecb5ab59-de7c-459b-b2c1-fb50d89ae9a2.talk_speed_agent_wpm.1.1650231646827
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Fastest Agent Talk Speed (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: af28a300-4860-4060-81a9-73a5219e4794
 
   #######################
   # QuickSight Template

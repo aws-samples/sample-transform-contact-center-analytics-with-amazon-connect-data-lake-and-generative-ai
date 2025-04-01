@@ -29,7 +29,7 @@ Resources:
   QuickSightDataSetCtrWithAttributes:
     Type: "AWS::QuickSight::DataSet"
     Properties:
-      DataSetId: ContactRecordsQS-533267107881-Contact-Records-With-Attributes
+      DataSetId: ContactRecordsQS-Contact-Records-With-Attributes
       Name: ContactRecordsQS - Connect Contact Records With Attributes
       AwsAccountId: !Ref AWS::AccountId
       PhysicalTableMap:
@@ -528,16 +528,4028 @@ Resources:
   QuickSightAnalysisCtr:
     Type: AWS::QuickSight::Analysis
     Properties:
-      AnalysisId: ContactRecordsQS-533267107881-Connect-Contact-Records-Analysis
+      AnalysisId: ContactRecordsQS-Connect-Contact-Records-Analysis
       Name: ContactRecordsQS Connect Contact Records Analysis
       AwsAccountId: !Ref AWS::AccountId
-      SourceEntity:
-        SourceTemplate:
-          DataSetReferences:
-            -   
-              DataSetArn: !GetAtt QuickSightDataSetCtrWithAttributes.Arn
-              DataSetPlaceholder:  "ContactRecordsQS - Connect Contact Records With Attributes"
-          Arn: "arn:aws:quicksight:us-west-2:533267107881:template/ContactRecordsQS-533267107881-Connect-Contact-Records-Analysis-Template"
+      Definition:
+        AnalysisDefaults:
+          DefaultNewSheetConfiguration:
+            InteractiveLayoutConfiguration:
+              Grid:
+                CanvasSizeOptions:
+                  ScreenCanvasSizeOptions:
+                    ResizeOption: RESPONSIVE
+            SheetContentType: INTERACTIVE
+        CalculatedFields: []
+        DataSetIdentifierDeclarations:
+        - DataSetArn: !GetAtt QuickSightDataSetCtrWithAttributes.Arn
+          Identifier: ContactRecordsQS - Connect Contact Records With Attributes
+        FilterGroups:
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 57b4b74b-a3d3-4261-a20c-0754b8a6bfab
+          Filters:
+          - RelativeDatesFilter:
+              AnchorDateConfiguration:
+                AnchorOption: NOW
+              Column:
+                ColumnName: initiation_timestamp
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: d2c923bf-43d8-4e00-94eb-76797e787e56
+              MinimumGranularity: DAY
+              NullOption: NON_NULLS_ONLY
+              ParameterName: LastNDays
+              RelativeDateType: LAST
+              TimeGranularity: DAY
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 73e0b9dd-2b99-4258-8a63-e6dd53d0c94b
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: channel
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: Channel
+              FilterId: 348f5e09-62ff-487a-ac5a-3dec29752d4d
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 26279563-d579-42a0-a3fd-540a08328e7d
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: Queue
+              FilterId: a420b16a-05e9-463d-8de0-90f97b13363e
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 2984cc52-c3df-4d51-8f80-cf0cee7164d1
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: Agent
+              FilterId: 5cae06aa-121c-4058-9e68-c4caf2dd3014
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 244a24d8-bbc4-4a8b-91c3-734912a60615
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_routing_profile_name
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: RoutingProfile
+              FilterId: afa90d08-6e3a-47f5-8742-deaf1ccc13c2
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 38386197-4ae6-45c5-9ec2-d8944a57171c
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: initiation_method
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: InitiationMethod
+              FilterId: 8df16843-e413-424a-95ea-58c9fe5fb388
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 28c8f327-5c30-42d4-bb25-003f5e5a7202
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: attribute_key
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: AttributeName
+              FilterId: 510a1679-d765-496f-89c0-79a76d2196a9
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: ALL_VISUALS
+                SheetId: c9f98d83-7659-4474-bafc-fba3c3b72cb3
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 294f889a-70ec-4407-8ccd-573f8819d791
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 98dccacd-90e0-408e-a2db-f2c41466583f
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - a1aae30c-f873-41b2-8082-723bc632dbec
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 02010a9c-775e-497d-9cc2-48e7c88fd9c4
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  CategoricalAggregationFunction: DISTINCT_COUNT
+                Column:
+                  ColumnName: contact_id
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: 99fdb58b-6cf4-497c-8fe9-dee8f3ce76ab
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - a1aae30c-f873-41b2-8082-723bc632dbec
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 93c12a5d-3c4b-4fe0-8993-04cd09cb6d2d
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 86b5a0fe-12a4-4e6d-b5d4-9203bfc9598a
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 0010ab59-acae-4c4f-a901-f01b488012ff
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 2202e789-1f81-4cb6-b0ed-53fb603afed9
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  CategoricalAggregationFunction: DISTINCT_COUNT
+                Column:
+                  ColumnName: contact_id
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: 0de60c66-b688-4965-9747-e04bdfbbaffd
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 0010ab59-acae-4c4f-a901-f01b488012ff
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 99525ff6-7f50-41f0-b78b-46ca2fb52a9f
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: b9f17d7a-415f-4880-a24e-676e0159417c
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - fdf3f8ce-ed23-48df-a98a-b6b8d6abaf5f
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 67e93569-c843-439c-bbf7-2628780fcfeb
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: total_duration_min
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: aaa6847e-8bd8-47fc-8ee6-b22c7670a888
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - fdf3f8ce-ed23-48df-a98a-b6b8d6abaf5f
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 841188d4-ebf3-402b-af55-b3560e7de6ae
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: ccbf42f8-2185-4a57-9176-20193bfdc0e2
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 20eebc82-d377-4179-8f89-0eac0d905132
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: b8215587-3a28-4d51-b867-e7af8fd9fb6e
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: total_duration_min
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: 396fc4a9-6c55-49b7-98df-b2795be02257
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 20eebc82-d377-4179-8f89-0eac0d905132
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: a751e44f-03fa-461a-8fe7-cd504602c0e5
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: ffda5d22-0d66-43a8-880c-ec1144973378
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - d0945731-f1f6-40e6-8d65-7a615e27f1d9
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 04c75841-55b4-4573-9d63-9d07040ec3fb
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: agent_interaction_duration_min
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: 6363122e-9b69-4741-b500-97d8f45cd93c
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - d0945731-f1f6-40e6-8d65-7a615e27f1d9
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 37023ac7-2b26-49cb-92ce-c14ade5d4314
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: a6266846-91c5-4302-9dc8-5ad48fcfa7a0
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 6c760219-983a-447d-9a9b-319aca1e6b4e
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 57a76e23-c5cc-402d-bf5d-cc31a9247d24
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: agent_interaction_duration_min
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: b8970ce6-1d10-42a2-accf-899bebee4af7
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 6c760219-983a-447d-9a9b-319aca1e6b4e
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 37a6c887-b174-40bb-806c-6e5fd2b0cf65
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: e7314962-60ab-4534-b25a-34ecaa1a88d0
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 645a1f5b-282d-4b20-bcc6-e3c91ca516d2
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 6bcbf62a-85f4-429a-9284-e005539d84ed
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: agent_customer_hold_duration_min
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: e088bb36-5aa0-4dd2-a5b4-cffcc2d8e8b2
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 645a1f5b-282d-4b20-bcc6-e3c91ca516d2
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: b9e5eb48-bf1e-4c08-a766-bf5e5722ef9c
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 279935f5-792a-4098-88e9-8b9149d8ee29
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 41052ab3-cf9f-43b2-94a3-755afcca8e6a
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 2e0196f6-9fec-4f4d-9706-5a29e1e688f2
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: agent_customer_hold_duration_min
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: 46262e7e-afc3-4491-8681-9fb55fb03c0d
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 41052ab3-cf9f-43b2-94a3-755afcca8e6a
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 9c66b0d6-5cc4-48b8-b6f4-069ce7c3558f
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 03f13ae6-6375-41a6-aed4-62bba75dc408
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 672a47f4-745d-4807-8962-6fbd77e4d9e8
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: ce37e7f1-dfbd-4b8a-b775-4ee9e4a96335
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: dcab4a28-043d-420f-8762-0a5e82916d35
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 8bcfa07b-7e52-477c-8c82-3d8dfc5d60e4
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 416166bf-6892-4ded-aadc-b5a75cdc380d
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: agent_after_contact_work_duration_min
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: 9a4b17e2-c08b-4dce-bfd7-361cf4ca33e0
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 8bcfa07b-7e52-477c-8c82-3d8dfc5d60e4
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 04737734-181f-43c6-9e62-c5428d4ac974
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 46ec39be-f669-4ed4-9d52-b253db25eba6
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 3b9fce27-8dce-4d9e-923d-0ad4bd99d825
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 1e84c58f-f419-4145-8536-17b04ee29580
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: agent_number_of_holds
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: 4a01f849-5cb4-4d26-be48-d0f1cc3f2187
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 3b9fce27-8dce-4d9e-923d-0ad4bd99d825
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: a67f7fac-85d0-44d9-8ecc-6f31472f4f32
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 5e693d6e-e469-4aa2-9fd8-98eb55b8b431
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 85f87232-c6d6-44fd-8b0b-90f9edb5111a
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 9920241d-d8c7-4d5d-a7ca-8456d4a772e5
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: agent_number_of_holds
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: 97cd6611-f417-4be6-a4fa-1c7368dac36f
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 85f87232-c6d6-44fd-8b0b-90f9edb5111a
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 81311cb9-4417-48e8-8a27-7112ce118ce8
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 98ca7b14-2b80-4911-adbc-2750b84c4397
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 8d36d0e4-b4de-4837-be5a-4c3c47403cbb
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: c113842b-885b-4fb7-b4c5-29a82b17a813
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: agent_connection_attempts
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: 6a9250a6-dde7-4523-938d-a58c37f9069a
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 8d36d0e4-b4de-4837-be5a-4c3c47403cbb
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 124e9385-aec2-4f96-ac50-f383fa301906
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 659ca616-c8d2-4a6b-a4ff-02fd1b12d1b0
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - c975f115-8e15-4bc7-bf1d-fa3f16d9a51a
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: c4442b1c-f133-4284-947a-4622bd673f89
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: agent_connection_attempts
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: ASC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: 7fdc061e-4126-45c9-bb3a-811c8ff92d16
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - c975f115-8e15-4bc7-bf1d-fa3f16d9a51a
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 1f817fa4-16c3-4e72-9ff7-813c32b5f23b
+          Filters:
+          - TopBottomFilter:
+              AggregationSortConfigurations:
+              - AggregationFunction:
+                  NumericalAggregationFunction:
+                    SimpleNumericalAggregation: AVERAGE
+                Column:
+                  ColumnName: agent_after_contact_work_duration_min
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+                SortDirection: DESC
+              Column:
+                ColumnName: agent_username
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              FilterId: d311900f-8cf3-4172-9af3-e4794c8de9aa
+              ParameterName: TopBottomN
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+                VisualIds:
+                - 672a47f4-745d-4807-8962-6fbd77e4d9e8
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: d0fb8f5d-d58f-4e84-836e-4c4060040554
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: system_endpoint_address
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: de0dc3d7-4823-46b2-aaf0-8c435e906fa7
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: c9f98d83-7659-4474-bafc-fba3c3b72cb3
+                VisualIds:
+                - d27c0d55-b04a-4793-9a26-edbec40b3acb
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 9aa710d5-c185-44e8-9605-acd94d49c005
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: disconnect_reason
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: c5f29848-cfc4-4a63-8b38-f73120f0b047
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6142e5cf-9f94-40dc-80f6-7d5646fa817e
+                VisualIds:
+                - c9b2b81b-6e46-4e32-8ad0-35513f9e2cc1
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: fb98893e-3faa-4820-aef0-7635b900d131
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: transferred_endpoint_address
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 3e66e0a7-9fb6-4c05-bb16-2b5eb47199c8
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6142e5cf-9f94-40dc-80f6-7d5646fa817e
+                VisualIds:
+                - 0b0094c8-2433-4b05-b039-6e31bd0657dc
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: 0d41a9b0-f814-4173-bcf4-976496b4a10d
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 93420f72-6ae2-4c4f-b5b8-3669910a9e4f
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: 6142e5cf-9f94-40dc-80f6-7d5646fa817e
+                VisualIds:
+                - b6770973-fda8-4041-a80d-1832cac8103b
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: bdeea9fc-5284-4d2d-b3ff-7829e0748605
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: disconnect_reason
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 97dbc672-8a0f-4b12-824c-14dc0d3b7c5e
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: c9f98d83-7659-4474-bafc-fba3c3b72cb3
+                VisualIds:
+                - 978a37a2-6b19-474d-b514-6715496551b2
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: df0ad86b-6d5c-4ea4-9c8f-d6b0bb61292f
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: queue_name
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  CategoryValue: ''
+                  MatchOperator: DOES_NOT_EQUAL
+                  NullOption: NON_NULLS_ONLY
+              FilterId: 39f362b3-942f-47b8-ad9e-232c908c1815
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: SELECTED_VISUALS
+                SheetId: c9f98d83-7659-4474-bafc-fba3c3b72cb3
+                VisualIds:
+                - c096336f-3440-4b77-b48a-ee6a9ac6b0c6
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: bbb0bd74-ade1-4206-b5c2-1eac55b23eb3
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: attribute_value
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: AttributeValue
+              FilterId: e25478aa-ad49-4ee2-9c75-88b1e7ee6a5b
+          ScopeConfiguration:
+            SelectedSheets:
+              SheetVisualScopingConfigurations:
+              - Scope: ALL_VISUALS
+                SheetId: c9f98d83-7659-4474-bafc-fba3c3b72cb3
+          Status: ENABLED
+        - CrossDataset: SINGLE_DATASET
+          FilterGroupId: b8508c44-5107-445a-8ba4-506d234b9cd0
+          Filters:
+          - CategoryFilter:
+              Column:
+                ColumnName: instance_id
+                DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              Configuration:
+                CustomFilterConfiguration:
+                  MatchOperator: EQUALS
+                  NullOption: NON_NULLS_ONLY
+                  ParameterName: InstanceId
+              FilterId: 8337e44f-a500-4ccb-9e30-8264a58be173
+          ScopeConfiguration:
+            AllSheets: {}
+          Status: ENABLED
+        ParameterDeclarations:
+        - IntegerParameterDeclaration:
+            DefaultValues:
+              StaticValues:
+              - 365
+            Name: LastNDays
+            ParameterValueType: SINGLE_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - IntegerParameterDeclaration :
+            DefaultValues:
+              StaticValues:
+              - 5
+            Name: TopBottomN
+            ParameterValueType: SINGLE_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: Channel
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: Queue
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: Agent
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: RoutingProfile
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues:
+              StaticValues: []
+            Name: AttributeName
+            ParameterValueType: SINGLE_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues:
+              StaticValues: []
+            Name: AttributeValue
+            ParameterValueType: SINGLE_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: Category
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: InitiationMethod
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        - StringParameterDeclaration:
+            DefaultValues: {}
+            Name: InstanceId
+            ParameterValueType: MULTI_VALUED
+            ValueWhenUnset:
+              ValueWhenUnsetOption: RECOMMENDED_VALUE
+        Sheets:
+        - ContentType: INTERACTIVE
+          Layouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 5
+                  ElementId: 0e71877c-5d51-43de-acee-501ae672ae6f
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 5
+                  ColumnSpan: 4
+                  ElementId: 3b28f0af-2803-4401-9e40-bd708cca91d1
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 9
+                  ColumnSpan: 4
+                  ElementId: dcde161a-af92-43bb-8e92-6770a675de82
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 13
+                  ColumnSpan: 5
+                  ElementId: 01e50272-3d49-47a8-997a-a3a5083fd9d5
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 18
+                  ColumnSpan: 5
+                  ElementId: 105f1bf5-df41-48c8-9e78-d8dd20f3a973
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 23
+                  ColumnSpan: 4
+                  ElementId: 113f6a3e-3f8c-4b34-8505-b47ce18df581
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 27
+                  ColumnSpan: 4
+                  ElementId: 74c55045-c90c-4e3f-8b96-b48c617adfef
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 31
+                  ColumnSpan: 5
+                  ElementId: d58451db-5925-46d9-92ec-02e1cab091b2
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 0
+                  ColumnSpan: 18
+                  ElementId: 1e8d1aaf-2880-42d7-942c-3a3937f084f8
+                  ElementType: VISUAL
+                  RowIndex: 2
+                  RowSpan: 7
+                - ColumnIndex: 18
+                  ColumnSpan: 18
+                  ElementId: 70254fe7-8104-4fe2-8bab-80e8ce1497a3
+                  ElementType: VISUAL
+                  RowIndex: 2
+                  RowSpan: 7
+                - ColumnIndex: 0
+                  ColumnSpan: 18
+                  ElementId: 5d77918f-ff34-46db-bc87-f03cdc913bc0
+                  ElementType: VISUAL
+                  RowIndex: 9
+                  RowSpan: 7
+                - ColumnIndex: 18
+                  ColumnSpan: 18
+                  ElementId: cc881e8a-8988-4e86-92dd-5c08e7a40699
+                  ElementType: VISUAL
+                  RowIndex: 9
+                  RowSpan: 7
+                - ColumnIndex: 0
+                  ColumnSpan: 10
+                  ElementId: 120ca4a0-0d4c-43e0-947c-f10fdc6aa9a5
+                  ElementType: VISUAL
+                  RowIndex: 16
+                  RowSpan: 3
+                - ColumnIndex: 10
+                  ColumnSpan: 7
+                  ElementId: c9b2b81b-6e46-4e32-8ad0-35513f9e2cc1
+                  ElementType: VISUAL
+                  RowIndex: 16
+                  RowSpan: 5
+                - ColumnIndex: 17
+                  ColumnSpan: 8
+                  ElementId: 1c054e38-6925-4b09-89f1-5eddca997add
+                  ElementType: VISUAL
+                  RowIndex: 16
+                  RowSpan: 8
+                - ColumnIndex: 25
+                  ColumnSpan: 11
+                  ElementId: b6770973-fda8-4041-a80d-1832cac8103b
+                  ElementType: VISUAL
+                  RowIndex: 16
+                  RowSpan: 8
+                - ColumnIndex: 0
+                  ColumnSpan: 10
+                  ElementId: 67eb1047-efc9-428a-993e-e6bdb3c12f1d
+                  ElementType: VISUAL
+                  RowIndex: 19
+                  RowSpan: 5
+                - ColumnIndex: 10
+                  ColumnSpan: 7
+                  ElementId: 0b0094c8-2433-4b05-b039-6e31bd0657dc
+                  ElementType: VISUAL
+                  RowIndex: 21
+                  RowSpan: 3
+          Name: Contact Stats
+          ParameterControls:
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 0c7004ac-b8a1-4bc1-9409-44914fcca6df
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: channel
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: Channel
+              Title: Channel
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 48f19791-d3ec-4f36-8b2b-76f0d93f18a9
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: queue_name
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: Queue
+              Title: Queue
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 3167bebb-e6a6-4f58-94b7-13d0905b120c
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_username
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: Agent
+              Title: Agent
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 8abe75dc-293b-483a-9822-a66f1baf2295
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_routing_profile_name
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: RoutingProfile
+              Title: Routing Profile
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: ca2a86bf-5328-41a8-9f25-4b32d99695e7
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: initiation_method
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: InitiationMethod
+              Title: Initiation Method
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: f314d1e1-2e9a-4ec9-9520-bfaa01c663ba
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: instance_id
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: InstanceId
+              Title: Instance Id
+              Type: MULTI_SELECT
+          - Slider:
+              DisplayOptions:
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              MaximumValue: 365.0
+              MinimumValue: 7.0
+              ParameterControlId: 63e7ba19-5f59-4da8-a520-9d3c09cc8087
+              SourceParameterName: LastNDays
+              StepSize: 1.0
+              Title: Last N Days
+          SheetControlLayouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: 63e7ba19-5f59-4da8-a520-9d3c09cc8087
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 2
+                  ColumnSpan: 2
+                  ElementId: 0c7004ac-b8a1-4bc1-9409-44914fcca6df
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 4
+                  ColumnSpan: 2
+                  ElementId: 48f19791-d3ec-4f36-8b2b-76f0d93f18a9
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 6
+                  ColumnSpan: 3
+                  ElementId: 3167bebb-e6a6-4f58-94b7-13d0905b120c
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 9
+                  ColumnSpan: 3
+                  ElementId: 8abe75dc-293b-483a-9822-a66f1baf2295
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: ca2a86bf-5328-41a8-9f25-4b32d99695e7
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+                - ColumnSpan: 2
+                  ElementId: f314d1e1-2e9a-4ec9-9520-bfaa01c663ba
+                  ElementType: PARAMETER_CONTROL
+                  RowSpan: 1
+          SheetId: 6142e5cf-9f94-40dc-80f6-7d5646fa817e
+          Visuals:
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Initiation Method
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_method.1.1650592792829
+                    Width: 196px
+                  - CustomLabel: '# Contacts'
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.1.1650592834346
+                    Width: 152px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: initiation_method
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_method.1.1650592792829
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.1.1650592834346
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.1.1650592834346
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: <visual-title>Contact Initiation Method</visual-title>
+                Visibility: VISIBLE
+              VisualId: 67eb1047-efc9-428a-993e-e6bdb3c12f1d
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Queue
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.queue_name.1.1650081172866
+                    Width: 277px
+                  - CustomLabel: '# Contacts'
+                    FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722466112756
+                  - CustomLabel: Time in Queue (avg)
+                    FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.queue_duration_min.2.1722466262516
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.queue_name.1.1650081172866
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722466112756
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: queue_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.queue_duration_min.2.1722466262516
+                SortConfiguration: {}
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: <visual-title>Queue Details</visual-title>
+                Visibility: VISIBLE
+              VisualId: b6770973-fda8-4041-a80d-1832cac8103b
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Channel
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.channel.2.1650081034286
+                    Width: 196px
+                  - CustomLabel: '# Contacts'
+                    FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722465572591
+                    Width: 79px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: channel
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.channel.2.1650081034286
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722465572591
+                SortConfiguration: {}
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: <visual-title>Contacts by Channel</visual-title>
+                Visibility: VISIBLE
+              VisualId: 120ca4a0-0d4c-43e0-947c-f10fdc6aa9a5
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: 3rd Party Endpoint Address
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.transferred_endpoint_address.1.1650076560706
+                    Width: 233px
+                  - CustomLabel: '# Contacts'
+                    FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722466032313
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: transferred_endpoint_address
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.transferred_endpoint_address.1.1650076560706
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722466032313
+                SortConfiguration: {}
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: <visual-title>Contracts Transferred by Endpoint Address</visual-title>
+                Visibility: VISIBLE
+              VisualId: 0b0094c8-2433-4b05-b039-6e31bd0657dc
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Endpoint Address
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.system_endpoint_address.1.1650076115748
+                    Width: 232px
+                  - CustomLabel: '# Contacts'
+                    FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722465887821
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: system_endpoint_address
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.system_endpoint_address.1.1650076115748
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722465887821
+                SortConfiguration: {}
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: <visual-title>Contacts by Endpoint Address</visual-title>
+                Visibility: VISIBLE
+              VisualId: 1c054e38-6925-4b09-89f1-5eddca997add
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_connection_attempts
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_connection_attempts.0.1650075497737
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\"># of Callback Attempts</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 113f6a3e-3f8c-4b34-8505-b47ce18df581
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_number_of_holds
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_number_of_holds.0.1650075419763
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\"># of Holds Placed
+                    by Agent</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: d58451db-5925-46d9-92ec-02e1cab091b2
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_after_contact_work_duration_min
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_after_contact_work_duration_min.0.1650075304830
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Time Spent on After
+                    Contact Work</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 01e50272-3d49-47a8-997a-a3a5083fd9d5
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_customer_hold_duration_min
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_customer_hold_duration_min.0.1650075243097
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NegativeValueConfiguration:
+                              DisplayMode: NEGATIVE
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              DecimalSeparator: DOT
+                              ThousandsSeparator:
+                                Symbol: COMMA
+                                Visibility: VISIBLE
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Agent/Contact Time
+                    on Hold</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: dcde161a-af92-43bb-8e92-6770a675de82
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        DateGranularity: DAY
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                        HierarchyId: 28453846-94ae-438f-b5e9-f218a7067a75
+                    Colors: []
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: queue_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.queue_duration_min.1.1722464411941
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.queue_duration_min.1.1722464411941
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueAxis:
+                  AxisOffset: 41px
+                  TickLabelOptions:
+                    LabelOptions:
+                      Visibility: VISIBLE
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: 28453846-94ae-438f-b5e9-f218a7067a75
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Time in Queue by Day\n  <br/>\n  (average)\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: cc881e8a-8988-4e86-92dd-5c08e7a40699
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        DateGranularity: DAY
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                        HierarchyId: fe15c3a7-116f-4ad1-8556-71fcd5040ed6
+                    Colors: []
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: total_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.total_duration_min.1.1722464671010
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.total_duration_min.1.1722464671010
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueAxis:
+                  TickLabelOptions:
+                    LabelOptions:
+                      Visibility: VISIBLE
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: fe15c3a7-116f-4ad1-8556-71fcd5040ed6
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Contact Duration by Day\n  <br/>\n  (average)\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 5d77918f-ff34-46db-bc87-f03cdc913bc0
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: queue_duration_min
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.queue_duration_min.0.1650073631938
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: VISIBLE
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Time in Queue</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 74c55045-c90c-4e3f-8b96-b48c617adfef
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: total_duration_min
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 00ff9b6f-5dd1-4ffb-a9d1-58847e7983b3.0.1650072034272
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: VISIBLE
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Contact Duration</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 3b28f0af-2803-4401-9e40-bd708cca91d1
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_interaction_duration_min
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_interaction_duration_min.0.1650074714112
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NegativeValueConfiguration:
+                              DisplayMode: NEGATIVE
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              DecimalSeparator: DOT
+                              ThousandsSeparator:
+                                Symbol: COMMA
+                                Visibility: VISIBLE
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Agent/Contact Interaction
+                    Time</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 105f1bf5-df41-48c8-9e78-d8dd20f3a973
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        DateGranularity: DAY
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                        HierarchyId: 3fbc3988-4ae1-4768-823f-4901c2c5a4d0
+                    Colors: []
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_interaction_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.agent_interaction_duration_min.1.1722464206580
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.agent_interaction_duration_min.1.1722464206580
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueAxis:
+                  TickLabelOptions:
+                    LabelOptions:
+                      Visibility: VISIBLE
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: 3fbc3988-4ae1-4768-823f-4901c2c5a4d0
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  Agent/Contact Interaction Time by Day\n  <br/>\n
+                    \ (average)\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 70254fe7-8104-4fe2-8bab-80e8ce1497a3
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - CategoricalMeasureField:
+                      AggregationFunction: DISTINCT_COUNT
+                      Column:
+                        ColumnName: contact_id
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.0.1650066623008
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\"># of Contacts</block>\n
+                    \ <br/>\n  <block align=\"center\">(total)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 0e71877c-5d51-43de-acee-501ae672ae6f
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryAxis:
+                  ScrollbarOptions:
+                    VisibleRange:
+                      PercentRange:
+                        From: 47.33483483483501
+                        To: 93.13063063063066
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        DateGranularity: DAY
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                        HierarchyId: fc697a83-34c7-4405-b4d3-fbf91a869521
+                    Colors: []
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.1.1650067126217
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.1.1650067126217
+                        Label: '# of contacts'
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueAxis:
+                  TickLabelOptions:
+                    LabelOptions:
+                      Visibility: VISIBLE
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: fc697a83-34c7-4405-b4d3-fbf91a869521
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  # of Contacts by Day\n  <br/>\n  (total)\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 1e8d1aaf-2880-42d7-942c-3a3937f084f8
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Reason
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.disconnect_reason.1.1650075704961
+                    Width: 234px
+                  - CustomLabel: '# Disconnects'
+                    FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722465772588
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: disconnect_reason
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.disconnect_reason.1.1650075704961
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722465772588
+                SortConfiguration: {}
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: <visual-title>Reason of Disconnect</visual-title>
+                Visibility: VISIBLE
+              VisualId: c9b2b81b-6e46-4e32-8ad0-35513f9e2cc1
+        - ContentType: INTERACTIVE
+          Layouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 5
+                  ElementId: 8d140e81-4cc9-4c78-a084-03adf205dbbe
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 5
+                  ColumnSpan: 4
+                  ElementId: b9c36a33-cbe5-43e5-ae3c-aed02754fbd7
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 9
+                  ColumnSpan: 4
+                  ElementId: cb9ecfd5-48f6-46f5-963c-0adff3cf035f
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 13
+                  ColumnSpan: 5
+                  ElementId: 980f555e-0b25-40cb-af79-a97b78e46575
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 18
+                  ColumnSpan: 5
+                  ElementId: 95a0e660-2840-4c93-b5af-c424e5825bfb
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 23
+                  ColumnSpan: 4
+                  ElementId: 20b826cc-b7fe-487f-a895-04ebba3de87d
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 27
+                  ColumnSpan: 4
+                  ElementId: 76a1d7b0-9f81-4a1a-bb81-23936ab3b73d
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 31
+                  ColumnSpan: 5
+                  ElementId: 15931117-60a3-4ec2-97a7-9d59e82a69bd
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 2
+                - ColumnIndex: 0
+                  ColumnSpan: 16
+                  ElementId: afaf3e6a-ad18-42d6-ab38-ca3de109efe0
+                  ElementType: VISUAL
+                  RowIndex: 2
+                  RowSpan: 7
+                - ColumnIndex: 16
+                  ColumnSpan: 6
+                  ElementId: 978a37a2-6b19-474d-b514-6715496551b2
+                  ElementType: VISUAL
+                  RowIndex: 2
+                  RowSpan: 7
+                - ColumnIndex: 22
+                  ColumnSpan: 6
+                  ElementId: d27c0d55-b04a-4793-9a26-edbec40b3acb
+                  ElementType: VISUAL
+                  RowIndex: 2
+                  RowSpan: 7
+                - ColumnIndex: 28
+                  ColumnSpan: 8
+                  ElementId: c096336f-3440-4b77-b48a-ee6a9ac6b0c6
+                  ElementType: VISUAL
+                  RowIndex: 2
+                  RowSpan: 7
+                - ColumnIndex: 0
+                  ColumnSpan: 36
+                  ElementId: 5cb5dc47-f59b-4e13-baae-2b6689637ccb
+                  ElementType: VISUAL
+                  RowIndex: 9
+                  RowSpan: 12
+          Name: Contact Attributes Analysis
+          ParameterControls:
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 5c7ebbc5-7ce5-493b-a579-9fd4115e84f8
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: initiation_method
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: InitiationMethod
+              Title: Initiation Method
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: f8d280b7-342c-4709-9a90-7c56d242c441
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: channel
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: Channel
+              Title: Channel
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 3ea59e1c-7176-4d81-8efa-104975dc9ab1
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: queue_name
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: Queue
+              Title: Queue
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 79f8d86d-dd64-4b9e-9c8b-5bdd1ffffeb2
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_username
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: Agent
+              Title: Agent
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: a9f6f011-8e66-4507-8779-1b952d0d2959
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_routing_profile_name
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: RoutingProfile
+              Title: Routing Profile
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 8b05c0b9-05a0-47b3-a75a-c087a6846d4e
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: attribute_key
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: AttributeName
+              Title: Contact Attribute
+              Type: SINGLE_SELECT
+          - Dropdown:
+              DisplayOptions:
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 668ce16d-6fdd-450c-97fa-4994a46f098f
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: instance_id
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: InstanceId
+              Title: Instance Id
+              Type: MULTI_SELECT
+          - Slider:
+              DisplayOptions:
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              MaximumValue: 365.0
+              MinimumValue: 7.0
+              ParameterControlId: 2cf29de6-d0d5-4dcd-aea3-989706840295
+              SourceParameterName: LastNDays
+              StepSize: 1.0
+              Title: Last N Days
+          - TextField:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 696ab7d5-40b7-4cc7-a365-1acc48339a44
+              SourceParameterName: AttributeValue
+              Title: Contact Attribute Value
+          SheetControlLayouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: 2cf29de6-d0d5-4dcd-aea3-989706840295
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 2
+                  ColumnSpan: 2
+                  ElementId: f8d280b7-342c-4709-9a90-7c56d242c441
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 4
+                  ColumnSpan: 2
+                  ElementId: 3ea59e1c-7176-4d81-8efa-104975dc9ab1
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 6
+                  ColumnSpan: 3
+                  ElementId: 79f8d86d-dd64-4b9e-9c8b-5bdd1ffffeb2
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 9
+                  ColumnSpan: 3
+                  ElementId: a9f6f011-8e66-4507-8779-1b952d0d2959
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: 5c7ebbc5-7ce5-493b-a579-9fd4115e84f8
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+                - ColumnIndex: 2
+                  ColumnSpan: 2
+                  ElementId: 668ce16d-6fdd-450c-97fa-4994a46f098f
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+                - ColumnIndex: 4
+                  ColumnSpan: 3
+                  ElementId: 8b05c0b9-05a0-47b3-a75a-c087a6846d4e
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+                - ColumnIndex: 7
+                  ColumnSpan: 3
+                  ElementId: 696ab7d5-40b7-4cc7-a365-1acc48339a44
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+          SheetId: c9f98d83-7659-4474-bafc-fba3c3b72cb3
+          Visuals:
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Queue
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.queue_name.1.1650081172866
+                    Width: 236px
+                  - CustomLabel: '# Contacts'
+                    FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722466112756
+                  - CustomLabel: Time in Queue (avg)
+                    FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.queue_duration_min.2.1722466262516
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.queue_name.1.1650081172866
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722466112756
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: queue_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.queue_duration_min.2.1722466262516
+                SortConfiguration: {}
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: <visual-title>Queue Details</visual-title>
+                Visibility: VISIBLE
+              VisualId: c096336f-3440-4b77-b48a-ee6a9ac6b0c6
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Endpoint Address
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.system_endpoint_address.1.1650076115748
+                    Width: 232px
+                  - CustomLabel: '# Contacts'
+                    FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722465887821
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: system_endpoint_address
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.system_endpoint_address.1.1650076115748
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722465887821
+                SortConfiguration: {}
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: <visual-title>Contacts by Endpoint Address</visual-title>
+                Visibility: VISIBLE
+              VisualId: d27c0d55-b04a-4793-9a26-edbec40b3acb
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - CustomLabel: Reason
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.disconnect_reason.1.1650075704961
+                    Width: 234px
+                  - CustomLabel: '# Disconnects'
+                    FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722465772588
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: disconnect_reason
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.disconnect_reason.1.1650075704961
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 7014b335-bc8c-346f-baaa-46505b2fbc42-3e959bce-abc8-40be-9932-d7623dd49a5c.contact_id.1.1722465772588
+                SortConfiguration: {}
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: VISIBLE
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: <visual-title>Reason of Disconnect</visual-title>
+                Visibility: VISIBLE
+              VisualId: 978a37a2-6b19-474d-b514-6715496551b2
+          - BarChartVisual:
+              Actions: []
+              ChartConfiguration:
+                BarsArrangement: CLUSTERED
+                CategoryAxis:
+                  ScrollbarOptions:
+                    VisibleRange:
+                      PercentRange:
+                        From: 16.028528528528515
+                        To: 61.82432432432427
+                CategoryLabelOptions:
+                  Visibility: HIDDEN
+                DataLabels:
+                  Overlap: DISABLE_OVERLAP
+                  Visibility: VISIBLE
+                FieldWells:
+                  BarChartAggregatedFieldWells:
+                    Category:
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        DateGranularity: DAY
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                        HierarchyId: 261ac211-d798-438e-81cb-3d245fb8e5fd
+                    Colors: []
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.1.1650067126217
+                Orientation: VERTICAL
+                SortConfiguration:
+                  CategoryItemsLimit:
+                    OtherCategories: INCLUDE
+                  CategorySort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                  ColorItemsLimit:
+                    OtherCategories: INCLUDE
+                  SmallMultiplesLimitConfiguration:
+                    OtherCategories: INCLUDE
+                Tooltip:
+                  FieldBasedTooltip:
+                    AggregationVisibility: HIDDEN
+                    TooltipFields:
+                    - FieldTooltipItem:
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.0.1650066333468
+                        Visibility: VISIBLE
+                    - FieldTooltipItem:
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.1.1650067126217
+                        Label: '# of contacts'
+                        Visibility: VISIBLE
+                    TooltipTitleType: PRIMARY_VALUE
+                  SelectedTooltipType: DETAILED
+                  TooltipVisibility: VISIBLE
+                ValueAxis:
+                  TickLabelOptions:
+                    LabelOptions:
+                      Visibility: VISIBLE
+                ValueLabelOptions:
+                  Visibility: HIDDEN
+              ColumnHierarchies:
+              - DateTimeHierarchy:
+                  DrillDownFilters: []
+                  HierarchyId: 261ac211-d798-438e-81cb-3d245fb8e5fd
+              Subtitle:
+                Visibility: HIDDEN
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  # of Contacts by Day\n  <br/>\n  (total)\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: afaf3e6a-ad18-42d6-ab38-ca3de109efe0
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_number_of_holds
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_number_of_holds.0.1650075419763
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\"># of Holds Placed
+                    by Agent</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 15931117-60a3-4ec2-97a7-9d59e82a69bd
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: queue_duration_min
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.queue_duration_min.0.1650073631938
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: VISIBLE
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Time in Queue</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 76a1d7b0-9f81-4a1a-bb81-23936ab3b73d
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_connection_attempts
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_connection_attempts.0.1650075497737
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\"># of Callback Attempts</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 20b826cc-b7fe-487f-a895-04ebba3de87d
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_interaction_duration_min
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_interaction_duration_min.0.1650074714112
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NegativeValueConfiguration:
+                              DisplayMode: NEGATIVE
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              DecimalSeparator: DOT
+                              ThousandsSeparator:
+                                Symbol: COMMA
+                                Visibility: VISIBLE
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Agent/Contact Interaction
+                    Time</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 95a0e660-2840-4c93-b5af-c424e5825bfb
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_after_contact_work_duration_min
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_after_contact_work_duration_min.0.1650075304830
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: HIDDEN
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Time Spent on After
+                    Contact Work</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 980f555e-0b25-40cb-af79-a97b78e46575
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: agent_customer_hold_duration_min
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_customer_hold_duration_min.0.1650075243097
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NegativeValueConfiguration:
+                              DisplayMode: NEGATIVE
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              DecimalSeparator: DOT
+                              ThousandsSeparator:
+                                Symbol: COMMA
+                                Visibility: VISIBLE
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Agent/Contact Time
+                    on Hold</block>\n  <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: cb9ecfd5-48f6-46f5-963c-0adff3cf035f
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - NumericalMeasureField:
+                      AggregationFunction:
+                        SimpleNumericalAggregation: AVERAGE
+                      Column:
+                        ColumnName: total_duration_min
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 00ff9b6f-5dd1-4ffb-a9d1-58847e7983b3.0.1650072034272
+                      FormatConfiguration:
+                        FormatConfiguration:
+                          NumberDisplayFormatConfiguration:
+                            NullValueFormatConfiguration:
+                              NullString: 'null'
+                            SeparatorConfiguration:
+                              ThousandsSeparator:
+                                Visibility: VISIBLE
+                            Suffix: ' min'
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\">Contact Duration</block>\n
+                    \ <br/>\n  <block align=\"center\">(average)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: b9c36a33-cbe5-43e5-ae3c-aed02754fbd7
+          - KPIVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldWells:
+                  TargetValues: []
+                  TrendGroups: []
+                  Values:
+                  - CategoricalMeasureField:
+                      AggregationFunction: DISTINCT_COUNT
+                      Column:
+                        ColumnName: contact_id
+                        DataSetIdentifier: ContactRecordsQS - Connect Contact Records With
+                          Attributes
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.0.1650066623008
+                SortConfiguration: {}
+              ColumnHierarchies: []
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <block align=\"center\"># of Contacts</block>\n
+                    \ <br/>\n  <block align=\"center\">(total)</block>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 8d140e81-4cc9-4c78-a084-03adf205dbbe
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order:
+                  - 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.1.1650160410966
+                  - 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.6.1650160410966
+                  - 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.customer_endpoint_address.0.1650160410966
+                  - 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.channel.7.1650160614203
+                  - 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.queue_name.2.1650160410966
+                  - 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.3.1650160410966
+                  - 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_routing_profile_name.8.1650160637120
+                  - 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_method.9.1722536572952
+                  - 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.attribute_key.8.1650161628663
+                  - 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.attribute_value.5.1650160410966
+                  SelectedFieldOptions:
+                  - CustomLabel: Contact ID
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.1.1650160410966
+                  - CustomLabel: Contact Initiated At
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.6.1650160410966
+                  - CustomLabel: Customer Endpoint
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.customer_endpoint_address.0.1650160410966
+                  - CustomLabel: Channel
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.channel.7.1650160614203
+                  - CustomLabel: Queue Name
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.queue_name.2.1650160410966
+                    Width: 158px
+                  - CustomLabel: Agent Username
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.3.1650160410966
+                    Width: 237px
+                  - CustomLabel: Routing Profile
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_routing_profile_name.8.1650160637120
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.attribute_key.8.1650161628663
+                    Width: 183px
+                  - CustomLabel: Attribute Value
+                    FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.attribute_value.5.1650160410966
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.1.1650160410966
+                    - DateDimensionField:
+                        Column:
+                          ColumnName: initiation_timestamp
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.6.1650160410966
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: customer_endpoint_address
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.customer_endpoint_address.0.1650160410966
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: channel
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.channel.7.1650160614203
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: queue_name
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.queue_name.2.1650160410966
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.3.1650160410966
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_routing_profile_name
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_routing_profile_name.8.1650160637120
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: initiation_method
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_method.9.1722536572952
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: attribute_key
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.attribute_key.8.1650161628663
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: attribute_value
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.attribute_value.5.1650160410966
+                    Values: []
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.initiation_timestamp.6.1650160410966
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Contact Attribute Details</visual-title>
+                Visibility: VISIBLE
+              VisualId: 5cb5dc47-f59b-4e13-baae-2b6689637ccb
+        - ContentType: INTERACTIVE
+          Layouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: a1aae30c-f873-41b2-8082-723bc632dbec
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 4
+                - ColumnIndex: 9
+                  ColumnSpan: 9
+                  ElementId: 0010ab59-acae-4c4f-a901-f01b488012ff
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 4
+                - ColumnIndex: 18
+                  ColumnSpan: 9
+                  ElementId: d0945731-f1f6-40e6-8d65-7a615e27f1d9
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 4
+                - ColumnIndex: 27
+                  ColumnSpan: 9
+                  ElementId: 6c760219-983a-447d-9a9b-319aca1e6b4e
+                  ElementType: VISUAL
+                  RowIndex: 0
+                  RowSpan: 4
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: 672a47f4-745d-4807-8962-6fbd77e4d9e8
+                  ElementType: VISUAL
+                  RowIndex: 4
+                  RowSpan: 4
+                - ColumnIndex: 9
+                  ColumnSpan: 9
+                  ElementId: 8bcfa07b-7e52-477c-8c82-3d8dfc5d60e4
+                  ElementType: VISUAL
+                  RowIndex: 4
+                  RowSpan: 4
+                - ColumnIndex: 18
+                  ColumnSpan: 9
+                  ElementId: 8d36d0e4-b4de-4837-be5a-4c3c47403cbb
+                  ElementType: VISUAL
+                  RowIndex: 4
+                  RowSpan: 4
+                - ColumnIndex: 27
+                  ColumnSpan: 9
+                  ElementId: c975f115-8e15-4bc7-bf1d-fa3f16d9a51a
+                  ElementType: VISUAL
+                  RowIndex: 4
+                  RowSpan: 4
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: fdf3f8ce-ed23-48df-a98a-b6b8d6abaf5f
+                  ElementType: VISUAL
+                  RowIndex: 8
+                  RowSpan: 4
+                - ColumnIndex: 9
+                  ColumnSpan: 9
+                  ElementId: 20eebc82-d377-4179-8f89-0eac0d905132
+                  ElementType: VISUAL
+                  RowIndex: 8
+                  RowSpan: 4
+                - ColumnIndex: 18
+                  ColumnSpan: 9
+                  ElementId: 645a1f5b-282d-4b20-bcc6-e3c91ca516d2
+                  ElementType: VISUAL
+                  RowIndex: 8
+                  RowSpan: 4
+                - ColumnIndex: 27
+                  ColumnSpan: 9
+                  ElementId: 41052ab3-cf9f-43b2-94a3-755afcca8e6a
+                  ElementType: VISUAL
+                  RowIndex: 8
+                  RowSpan: 4
+                - ColumnIndex: 0
+                  ColumnSpan: 9
+                  ElementId: 3b9fce27-8dce-4d9e-923d-0ad4bd99d825
+                  ElementType: VISUAL
+                  RowIndex: 12
+                  RowSpan: 4
+                - ColumnIndex: 9
+                  ColumnSpan: 9
+                  ElementId: 85f87232-c6d6-44fd-8b0b-90f9edb5111a
+                  ElementType: VISUAL
+                  RowIndex: 12
+                  RowSpan: 4
+          Name: Agent Contact Leaderboard
+          ParameterControls:
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 4a444604-18ee-4d8c-a2ee-0f6e827956ef
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: channel
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: Channel
+              Title: Channel
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: ac6688ef-09f2-47e4-8d99-a58dee74f2b9
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: queue_name
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: Queue
+              Title: Queue
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: ac6683f6-0a30-4507-96c0-11a536f9d77c
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_username
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: Agent
+              Title: Agent
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                InfoIconLabelOptions:
+                  Visibility: HIDDEN
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 782fd754-a43d-4740-99e5-07699ef45d13
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: agent_routing_profile_name
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: RoutingProfile
+              Title: Routing Profile
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 86eb3a33-1714-4b8e-b337-f2f4d2ca7d38
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: initiation_method
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: InitiationMethod
+              Title: Initiation Method
+              Type: MULTI_SELECT
+          - Dropdown:
+              DisplayOptions:
+                SelectAllOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 0642f7e4-db13-4caf-9d84-fe9f11c36154
+              SelectableValues:
+                LinkToDataSetColumn:
+                  ColumnName: instance_id
+                  DataSetIdentifier: ContactRecordsQS - Connect Contact Records With Attributes
+              SourceParameterName: InstanceId
+              Title: Instance Id
+              Type: MULTI_SELECT
+          - Slider:
+              DisplayOptions:
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              MaximumValue: 365.0
+              MinimumValue: 7.0
+              ParameterControlId: bf1de5f7-9dfb-47f6-9f48-7d07e188df29
+              SourceParameterName: LastNDays
+              StepSize: 1.0
+              Title: Last N Days
+          - TextField:
+              DisplayOptions:
+                PlaceholderOptions:
+                  Visibility: VISIBLE
+                TitleOptions:
+                  FontConfiguration:
+                    FontSize:
+                      Relative: MEDIUM
+                  Visibility: VISIBLE
+              ParameterControlId: 6cb747fe-649b-4233-8829-99eb91ca8df4
+              SourceParameterName: TopBottomN
+              Title: Top/Bottom N Results
+          SheetControlLayouts:
+          - Configuration:
+              GridLayout:
+                Elements:
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: bf1de5f7-9dfb-47f6-9f48-7d07e188df29
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 2
+                  ColumnSpan: 2
+                  ElementId: 4a444604-18ee-4d8c-a2ee-0f6e827956ef
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 4
+                  ColumnSpan: 2
+                  ElementId: ac6688ef-09f2-47e4-8d99-a58dee74f2b9
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 6
+                  ColumnSpan: 3
+                  ElementId: ac6683f6-0a30-4507-96c0-11a536f9d77c
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 9
+                  ColumnSpan: 3
+                  ElementId: 782fd754-a43d-4740-99e5-07699ef45d13
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 0
+                  RowSpan: 1
+                - ColumnIndex: 0
+                  ColumnSpan: 2
+                  ElementId: 86eb3a33-1714-4b8e-b337-f2f4d2ca7d38
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+                - ColumnIndex: 2
+                  ColumnSpan: 2
+                  ElementId: 0642f7e4-db13-4caf-9d84-fe9f11c36154
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+                - ColumnIndex: 4
+                  ColumnSpan: 3
+                  ElementId: 6cb747fe-649b-4233-8829-99eb91ca8df4
+                  ElementType: PARAMETER_CONTROL
+                  RowIndex: 1
+                  RowSpan: 1
+          SheetId: 77caa9a0-4964-4448-9a89-932b8b4f9229
+          Visuals:
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 344px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_connection_attempts.1.1650086641462
+                    Width: 115px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_connection_attempts
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_connection_attempts.1.1650086641462
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              DecimalPlacesConfiguration:
+                                DecimalPlaces: 2
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_connection_attempts.1.1650086641462
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <inline font-size=\"14px\">Least # of Callback
+                    Attempts (average)</inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: c975f115-8e15-4bc7-bf1d-fa3f16d9a51a
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 344px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_connection_attempts.1.1650086641462
+                    Width: 117px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_connection_attempts
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_connection_attempts.1.1650086641462
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              DecimalPlacesConfiguration:
+                                DecimalPlaces: 2
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_connection_attempts.1.1650086641462
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: '<visual-title>Greatest # of Callback Attempts (average)</visual-title>'
+                Visibility: VISIBLE
+              VisualId: 8d36d0e4-b4de-4837-be5a-4c3c47403cbb
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 341px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_number_of_holds.1.1650086145373
+                    Width: 113px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_number_of_holds
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_number_of_holds.1.1650086145373
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              DecimalPlacesConfiguration:
+                                DecimalPlaces: 2
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_number_of_holds.1.1650086145373
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <inline font-size=\"14px\">Least # of Holds
+                    Placed by Agent (average)</inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 85f87232-c6d6-44fd-8b0b-90f9edb5111a
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 325px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_number_of_holds.1.1650086145373
+                    Width: 113px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_number_of_holds
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_number_of_holds.1.1650086145373
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              DecimalPlacesConfiguration:
+                                DecimalPlaces: 2
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              SeparatorConfiguration:
+                                ThousandsSeparator:
+                                  Visibility: HIDDEN
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_number_of_holds.1.1650086145373
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: '<visual-title>Greatest # of Holds Placed by Agent (average)</visual-title>'
+                Visibility: VISIBLE
+              VisualId: 3b9fce27-8dce-4d9e-923d-0ad4bd99d825
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 344px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_after_contact_work_duration_min.1.1722538340910
+                    Width: 122px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_after_contact_work_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_after_contact_work_duration_min.1.1722538340910
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                SortConfiguration: {}
+                TableOptions:
+                  CellStyle:
+                    Height: 27
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <inline font-size=\"14px\">Least Time Spent
+                    on After Contact Work (average)</inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 8bcfa07b-7e52-477c-8c82-3d8dfc5d60e4
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 335px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_after_contact_work_duration_min.1.1722538206228
+                    Width: 111px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_after_contact_work_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_after_contact_work_duration_min.1.1722538206228
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                SortConfiguration: {}
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Most Time Spent on After Contact Work (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 672a47f4-745d-4807-8962-6fbd77e4d9e8
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 343px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_customer_hold_duration_min.1.1722538158471
+                    Width: 119px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_customer_hold_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_customer_hold_duration_min.1.1722538158471
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                SortConfiguration: {}
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <inline font-size=\"14px\">Shortest Agent/Contact
+                    Time on Hold (average)</inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 41052ab3-cf9f-43b2-94a3-755afcca8e6a
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 343px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_customer_hold_duration_min.1.1722538037820
+                    Width: 124px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_customer_hold_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_customer_hold_duration_min.1.1722538037820
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                SortConfiguration: {}
+                TableOptions:
+                  CellStyle:
+                    Height: 26
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Longest Agent/Contact Time on Hold (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 645a1f5b-282d-4b20-bcc6-e3c91ca516d2
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 344px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_interaction_duration_min.1.1722538106965
+                    Width: 128px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_interaction_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_interaction_duration_min.1.1722538106965
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                SortConfiguration: {}
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: "<visual-title>\n  <inline font-size=\"14px\">Shortest Agent/Contact
+                    Interaction Time (average)</inline>\n</visual-title>"
+                Visibility: VISIBLE
+              VisualId: 6c760219-983a-447d-9a9b-319aca1e6b4e
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 343px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_interaction_duration_min.1.1722538005862
+                    Width: 121px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: agent_interaction_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_interaction_duration_min.1.1722538005862
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                SortConfiguration: {}
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Longest Agent/Contact Interaction Time (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: d0945731-f1f6-40e6-8d65-7a615e27f1d9
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 341px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: total_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.total_duration_min.1.1722538089165
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                SortConfiguration: {}
+                TableOptions:
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Shortest Contact Duration (Average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: 20eebc82-d377-4179-8f89-0eac0d905132
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 329px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - NumericalMeasureField:
+                        AggregationFunction:
+                          SimpleNumericalAggregation: AVERAGE
+                        Column:
+                          ColumnName: total_duration_min
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.total_duration_min.1.1722537979120
+                        FormatConfiguration:
+                          FormatConfiguration:
+                            NumberDisplayFormatConfiguration:
+                              NullValueFormatConfiguration:
+                                NullString: 'null'
+                              Suffix: ' min'
+                SortConfiguration: {}
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: <visual-title>Longest Contact Duration (average)</visual-title>
+                Visibility: VISIBLE
+              VisualId: fdf3f8ce-ed23-48df-a98a-b6b8d6abaf5f
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 347px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.0.1650066623008
+                    Width: 105px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.0.1650066623008
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: ASC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.0.1650066623008
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: '<visual-title>Least # of Contacts</visual-title>'
+                Visibility: VISIBLE
+              VisualId: 0010ab59-acae-4c4f-a901-f01b488012ff
+          - TableVisual:
+              Actions: []
+              ChartConfiguration:
+                FieldOptions:
+                  Order: []
+                  SelectedFieldOptions:
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Width: 337px
+                  - FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.0.1650066623008
+                    Width: 101px
+                FieldWells:
+                  TableAggregatedFieldWells:
+                    GroupBy:
+                    - CategoricalDimensionField:
+                        Column:
+                          ColumnName: agent_username
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.agent_username.1.1650084330422
+                    Values:
+                    - CategoricalMeasureField:
+                        AggregationFunction: DISTINCT_COUNT
+                        Column:
+                          ColumnName: contact_id
+                          DataSetIdentifier: ContactRecordsQS - Connect Contact Records
+                            With Attributes
+                        FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.0.1650066623008
+                SortConfiguration:
+                  RowSort:
+                  - FieldSort:
+                      Direction: DESC
+                      FieldId: 2aed4e8e-55aa-45f7-a9c3-5e7245df9c4e.contact_id.0.1650066623008
+                TableOptions:
+                  CellStyle:
+                    Height: 25
+                  HeaderStyle:
+                    Height: 25
+                    TextWrap: WRAP
+                    Visibility: HIDDEN
+              Subtitle:
+                Visibility: VISIBLE
+              Title:
+                FormatText:
+                  RichText: '<visual-title>Greatest # of Contacts</visual-title>'
+                Visibility: VISIBLE
+              VisualId: a1aae30c-f873-41b2-8082-723bc632dbec
 
   #######################
   # QuickSight Template
